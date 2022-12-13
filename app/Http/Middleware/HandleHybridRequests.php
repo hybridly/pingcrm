@@ -9,6 +9,8 @@ class HandleHybridRequests extends Middleware
 {
     /**
      * Defines the properties that are shared to all requests.
+     *
+     * @return mixed[]
      */
     public function share(Request $request): array
     {
