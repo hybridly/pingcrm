@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return hybridly('welcome');
+Route::get("/", function () {
+    return hybridly("welcome");
 });

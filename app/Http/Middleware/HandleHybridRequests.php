@@ -13,7 +13,7 @@ class HandleHybridRequests extends Middleware
     public function share(Request $request): array
     {
         return [
-            //
-        ];
+                //
+            ];
     }
 }
