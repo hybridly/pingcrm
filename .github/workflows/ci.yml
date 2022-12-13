@@ -17,4 +17,5 @@ jobs:
         uses: devcontainers/ci@v0.2
         with:
           imageName: ghcr.io/aminevg/pingcrm-hybridly-gha
+          imageTag: ${{ github.sha }}
           runCmd: vendor/bin/phpstan
