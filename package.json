@@ -2,7 +2,8 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "prepare": "husky install"
     },
     "devDependencies": {
         "@prettier/plugin-php": "^0.19.2",
@@ -20,8 +21,10 @@
         "eslint": "^8.29.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-vue": "^9.8.0",
+        "husky": "^8.0.2",
         "hybridly": "^0.0.1-alpha.14",
         "laravel-vite-plugin": "^0.7.1",
+        "lint-staged": "^13.1.0",
         "postcss": "^8.4.19",
         "prettier": "^2.8.1",
         "tailwindcss": "^3.2.4",
@@ -38,5 +41,9 @@
             "autoprefixer": {},
             "tailwindcss": {}
         }
+    },
+    "lint-staged": {
+        "*.{js,ts,vue}": "eslint --fix",
+        "*": "prettier --ignore-unknown --write"
     }
 }
