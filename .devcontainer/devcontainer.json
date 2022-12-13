@@ -13,8 +13,8 @@
         // "onecentlin.laravel-blade"
     ],
     "remoteUser": "sail",
-    "initializeCommand": "docker run --rm -u \"$(id -u):$(id -g)\" -v \"$(pwd):/var/www/html\" -w /var/www/html laravelsail/php81-composer:latest composer install --ignore-platform-reqs",
-    "postCreateCommand": "chown -R 1000:1000 /var/www/html && pnpm config set store-path /home/sail/.pnpm-store"
+    "initializeCommand": "composer install --ignore-platform-reqs"
+    // "postCreateCommand": "chown -R 1000:1000 /var/www/html && pnpm config set store-path /home/sail/.pnpm-store"
     // "forwardPorts": [],
     // "runServices": [],
     // "shutdownAction": "none",

@@ -3,20 +3,18 @@ on: [push]
 jobs:
   phpstan:
     runs-on: ubuntu-latest
-    container:
-      image: lorisleiva/laravel-docker:8.1
 
     steps:
-      - name: "Checkout code"
+      - name: Checkout code
         uses: actions/checkout@v3
-      - name: Cache Composer dependencies
-        id: cache-composer
-        uses: actions/cache@v2
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
         with:
-          path: vendor
-          key: ${{ runner.os }}-${{ hashFiles('composer.lock') }}
-      - name: Install Composer dependencies
-        if: steps.cache-composer.outputs.cache-hit != 'true'
-        run: composer install --prefer-dist --no-progress
-      - name: Run PHPStan
-        run: vendor/bin/phpstan --memory-limit=1G
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run PHPStan in dev container
+        uses: devcontainers/ci@v0.2
+        with:
+          imageName: ghcr.io/aminevg/pingcrm-hybridly-gha
+          runCmd: vendor/bin/phpstan
