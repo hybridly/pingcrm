@@ -42,3 +42,7 @@ resources/types/*.d.ts
 !resources/types/hybridly.d.ts
 !resources/types/shims-*.d.ts
 resources/i18n/locales.json
+
+.phpstorm.meta.php
+_ide_helper.php
+_ide_helper_models.php
