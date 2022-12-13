@@ -13,7 +13,7 @@
         // "onecentlin.laravel-blade"
     ],
     "remoteUser": "sail",
-    "postCreateCommand": "composer install --ignore-platform-reqs"
+    "initializeCommand": "composer install --ignore-platform-reqs"
     // "forwardPorts": [],
     // "runServices": [],
     // "shutdownAction": "none",
