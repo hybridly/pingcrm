@@ -38,4 +38,28 @@ jobs:
         with:
           cacheFrom: ghcr.io/aminevg/pingcrm-hybridly-gha
           push: never
-          runCmd: vendor/bin/phpstan
+          runCmd: |
+            composer install --quiet
+            vendor/bin/phpstan
+
+  test:
+    needs: build-dev-container
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run tests in dev container
+        uses: devcontainers/ci@v0.2
+        with:
+          cacheFrom: ghcr.io/aminevg/pingcrm-hybridly-gha
+          push: never
+          runCmd: |
+            composer install --quiet
+            php artisan test
