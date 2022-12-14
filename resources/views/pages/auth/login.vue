@@ -62,6 +62,8 @@
 </template>
 
 <script setup lang="ts">
+useHead({ title: "Login - Ping CRM" });
+
 const form = useForm<App.Data.LoginData>({
     method: "POST",
     url: route("login"),
