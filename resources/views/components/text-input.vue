@@ -21,10 +21,9 @@ const props = withDefaults(
         id?: string;
         type?: string;
         autofocus?: boolean;
-        // eslint-disable-next-line vue/require-default-prop
         autocapitalize?: string;
-        error: string;
-        label: string;
+        error?: string;
+        label?: string;
         modelValue: string;
     }>(),
     {

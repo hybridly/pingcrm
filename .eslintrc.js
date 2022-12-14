@@ -17,6 +17,9 @@ module.exports = {
         sourceType: "module",
     },
     plugins: ["vue"],
-    rules: { "vue/multi-word-component-names": "off" },
+    rules: {
+        "vue/multi-word-component-names": "off",
+        "vue/require-default-prop": "off",
+    },
     globals: { App: true },
 };
