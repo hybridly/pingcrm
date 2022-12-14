@@ -18,6 +18,8 @@ jobs:
       - name: Install Composer dependencies
         if: steps.cache-composer.outputs.cache-hit != 'true'
         run: composer install --prefer-dist --no-progress
+      - name: Copy environment file
+        run: cp .env.example .env
       - name: Run PHPStan
         run: vendor/bin/phpstan
 
@@ -38,6 +40,8 @@ jobs:
       - name: Install Composer dependencies
         if: steps.cache-composer.outputs.cache-hit != 'true'
         run: composer install --prefer-dist --no-progress
+      - name: Copy environment file
+        run: cp .env.example .env
       - name: Generate Laravel key
         run: php artisan key:generate
       - name: Run tests
