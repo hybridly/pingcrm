@@ -1,0 +1,48 @@
+name: CI
+on: [push]
+jobs:
+  phpstan:
+    runs-on: ubuntu-latest
+    container:
+      image: lorisleiva/laravel-docker:8.1
+
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v3
+      - name: Cache Composer dependencies
+        id: cache-composer
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: ${{ runner.os }}-${{ hashFiles('composer.lock') }}
+      - name: Install Composer dependencies
+        if: steps.cache-composer.outputs.cache-hit != 'true'
+        run: composer install --prefer-dist --no-progress
+      - name: Copy environment file
+        run: cp .env.example .env
+      - name: Run PHPStan
+        run: vendor/bin/phpstan
+
+  tests:
+    runs-on: ubuntu-latest
+    container:
+      image: lorisleiva/laravel-docker:8.1
+
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v3
+      - name: Cache Composer dependencies
+        id: cache-composer
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: ${{ runner.os }}-${{ hashFiles('composer.lock') }}
+      - name: Install Composer dependencies
+        if: steps.cache-composer.outputs.cache-hit != 'true'
+        run: composer install --prefer-dist --no-progress
+      - name: Copy environment file
+        run: cp .env.example .env
+      - name: Generate Laravel key
+        run: php artisan key:generate
+      - name: Run tests
+        run: php artisan test
