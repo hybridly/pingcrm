@@ -38,9 +38,7 @@ jobs:
         with:
           cacheFrom: ghcr.io/aminevg/pingcrm-hybridly-gha
           push: never
-          runCmd: |
-            composer install --quiet
-            vendor/bin/phpstan
+          runCmd: composer install --quiet && vendor/bin/phpstan
 
   test:
     needs: build-dev-container
@@ -60,6 +58,4 @@ jobs:
         with:
           cacheFrom: ghcr.io/aminevg/pingcrm-hybridly-gha
           push: never
-          runCmd: |
-            composer install --quiet
-            php artisan test
+          runCmd: composer install --quiet && php artisan test
