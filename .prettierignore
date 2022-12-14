@@ -3,7 +3,6 @@ node_modules
 storage
 .pnpm-store
 pnpm-lock.yaml
+composer.lock
 resources/types/*.d.ts
-!resources/types/hybridly.d.ts
-!resources/types/shims-*.d.ts
 resources/i18n/locales.json

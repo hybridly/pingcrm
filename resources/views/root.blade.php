@@ -5,7 +5,7 @@
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			@vite('resources/application/main.ts')
 	</head>
-	<body class="h-full bg-gray-50 antialiased">
+	<body class="font-sans leading-none text-gray-700 antialiased">
 			@hybridly(class: 'h-full')
 	</body>
 </html>

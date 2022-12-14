@@ -48,6 +48,8 @@ export default defineConfig({
             dts: "resources/types/auto-imports.d.ts",
             imports: ["vue", "@vueuse/core", "@vueuse/head", hybridlyImports],
             vueTemplate: true,
+            dirs: ["./resources/scripts"],
+            eslintrc: { enabled: true },
         }),
     ],
     resolve: {

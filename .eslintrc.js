@@ -8,6 +8,7 @@ module.exports = {
         "plugin:vue/vue3-recommended",
         "eslint:recommended",
         "@vue/typescript/recommended",
+        "./.eslintrc-auto-import.json",
         "prettier",
     ],
     overrides: [],
@@ -17,4 +18,5 @@ module.exports = {
     },
     plugins: ["vue"],
     rules: { "vue/multi-word-component-names": "off" },
+    globals: { App: true },
 };

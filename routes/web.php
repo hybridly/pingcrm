@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/", function () {
-    return hybridly("welcome");
+// Auth
+
+Route::get("login", [AuthenticatedSessionController::class, "create"])
+    ->name("login")
+    ->middleware("guest");
+
+Route::post("login", [AuthenticatedSessionController::class, "store"])
+    ->name("login.store")
+    ->middleware("guest");
+
+Route::delete("logout", [
+    AuthenticatedSessionController::class,
+    "destroy",
+])->name("logout");
+
+Route::middleware("auth")->group(function () {
+    Route::get("/", function () {
+        return hybridly("welcome");
+    });
 });
