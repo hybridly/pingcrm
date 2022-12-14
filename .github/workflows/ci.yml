@@ -38,5 +38,7 @@ jobs:
       - name: Install Composer dependencies
         if: steps.cache-composer.outputs.cache-hit != 'true'
         run: composer install --prefer-dist --no-progress
-      - name: Run PHPStan
+      - name: Generate Laravel key
+        run: php artisan key:generate
+      - name: Run tests
         run: php artisan test
