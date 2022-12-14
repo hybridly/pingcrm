@@ -12,7 +12,8 @@
         // "onecentlin.laravel5-snippets",
         // "onecentlin.laravel-blade"
     ],
-    "remoteUser": "sail"
+    "remoteUser": "sail",
+    "initializeCommand": "composer install --no-progress --ignore-platform-reqs && pnpm install"
     // "forwardPorts": [],
     // "runServices": [],
     // "shutdownAction": "none",
