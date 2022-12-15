@@ -12,15 +12,7 @@
                         </router-link>
                         <dropdown class="md:hidden" placement="bottom-end">
                             <template #default>
-                                <svg
-                                    class="w-6 h-6 fill-white"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                >
-                                    <path
-                                        d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"
-                                    />
-                                </svg>
+                                <i-line-md-menu class="w-8 h-8 text-white" />
                             </template>
                             <template #dropdown>
                                 <div

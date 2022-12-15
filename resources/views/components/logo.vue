@@ -22,15 +22,15 @@
 <script setup lang="ts">
 const fill = ref(false);
 
-onMounted(() => setTimeout(() => (fill.value = true), 1000));
+onMounted(() => setTimeout(() => (fill.value = true), 500));
 </script>
 
 <style scoped>
 path {
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
-    animation: dash 2s linear forwards;
-    transition: fill 1.5s ease-in-out;
+    animation: dash 1.5s linear forwards;
+    transition: fill 1s ease-in-out;
 }
 
 @keyframes dash {
