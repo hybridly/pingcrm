@@ -13,7 +13,7 @@
         // "onecentlin.laravel-blade"
     ],
     "remoteUser": "sail",
-    "initializeCommand": "cp -n .env.devcontainer .env && run --rm -u \"$(id -u):$(id -g)\" -v \"$(pwd):/var/www/html\" -w /var/www/html laravelsail/php81-composer:latest composer install --ignore-platform-reqs",
+    "initializeCommand": "docker run --rm -u \"$(id -u):$(id -g)\" -v \"$(pwd):/var/www/html\" -w /var/www/html laravelsail/php81-composer:latest composer install --ignore-platform-reqs && (cp -n .env.devcontainer .env || echo 'env file already exists')",
     "postCreateCommand": "chown -R 1000:1000 /var/www/html && pnpm config set store-path /home/sail/.pnpm-store"
     // "forwardPorts": [],
     // "runServices": [],
