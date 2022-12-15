@@ -5,4 +5,5 @@ interface GlobalHybridlyProperties extends App.Data.SharedData {
         warning?: string;
         info?: string;
     };
+    errors: {[key: string]: string};
 }

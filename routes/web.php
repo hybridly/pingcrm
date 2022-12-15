@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticatedSessionController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +31,7 @@ Route::delete("logout", [
 ])->name("logout");
 
 Route::middleware("auth")->group(function () {
-    Route::get("/", function () {
-        return hybridly("welcome");
-    });
+    Route::get("/", [DashboardController::class, "index"])->name(
+        "dashboard.index",
+    );
 });
