@@ -12,7 +12,9 @@
                         </router-link>
                         <dropdown class="md:hidden" placement="bottom-end">
                             <template #default>
-                                <i-line-md-menu class="w-8 h-8 text-white" />
+                                <i-ic-baseline-menu
+                                    class="w-8 h-8 text-white"
+                                />
                             </template>
                             <template #dropdown>
                                 <div
@@ -42,8 +44,8 @@
                                             >&nbsp;{{ user?.last_name }}</span
                                         >
                                     </div>
-                                    <i-line-md-chevron-small-left
-                                        class="-rotate-90 w-5 h-5 text-gray-700 group-hover:text-indigo-600 focus:text-indigo-600"
+                                    <i-ic-round-keyboard-arrow-down
+                                        class="w-6 h-6 text-gray-700 group-hover:text-indigo-600 focus:text-indigo-600"
                                     />
                                 </div>
                             </template>

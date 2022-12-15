@@ -10,7 +10,10 @@
                 "
                 :href="route('dashboard.index')"
             >
-                <i-line-md-home name="dashboard" class="mr-2 w-4 h-4" />
+                <i-ic-baseline-dashboard
+                    name="dashboard"
+                    class="mr-2 w-4 h-4"
+                />
                 <span>Dashboard</span>
             </router-link>
         </div>

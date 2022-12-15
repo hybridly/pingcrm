@@ -5,7 +5,7 @@
             class="flex items-center justify-between mb-8 max-w-3xl bg-green-500 rounded"
         >
             <div class="flex items-center">
-                <i-line-md-confirm
+                <i-ic-baseline-check
                     class="flex-shrink-0 ml-3 mr-2 w-6 h-6 text-white"
                 />
                 <div class="py-4 text-white text-sm font-medium">
@@ -13,7 +13,7 @@
                 </div>
             </div>
             <button type="button" class="group mr-2 p-2" @click="show = false">
-                <i-line-md-close
+                <i-ic-baseline-close
                     class="block w-3 h-3 text-green-800 group-hover:text-white"
                 />
             </button>
@@ -23,7 +23,7 @@
             class="flex items-center justify-between mb-8 max-w-3xl bg-red-500 rounded"
         >
             <div class="flex items-center">
-                <i-line-md-alert-circle
+                <i-baseline-error-outline
                     class="flex-shrink-0 ml-4 mr-2 w-5 h-5 text-white"
                 />
                 <div
@@ -43,7 +43,7 @@
                 </div>
             </div>
             <button type="button" class="group mr-2 p-2" @click="show = false">
-                <i-line-md-close
+                <i-ic-baseline-close
                     class="block w-3 h-3 text-red-800 group-hover:text-white"
                 />
             </button>
