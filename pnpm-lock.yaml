@@ -1,8 +1,10 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@iconify-json/ic': ^1.1.10
+  '@iconify-json/line-md': ^1.1.20
+  '@popperjs/core': ^2.11.6
   '@prettier/plugin-php': ^0.19.2
-  '@tailwindcss/forms': ^0.5.3
   '@types/node': ^18.11.12
   '@typescript-eslint/eslint-plugin': ^5.46.0
   '@typescript-eslint/parser': ^5.46.0
@@ -32,8 +34,10 @@ specifiers:
   vue: ^3.2.45
 
 devDependencies:
+  '@iconify-json/ic': 1.1.10
+  '@iconify-json/line-md': 1.1.20
+  '@popperjs/core': 2.11.6
   '@prettier/plugin-php': 0.19.2_prettier@2.8.1
-  '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.4
   '@types/node': 18.11.12
   '@typescript-eslint/eslint-plugin': 5.46.0_5mle7isnkfgjmrghnnczirv6iy
   '@typescript-eslint/parser': 5.46.0_ha6vam6werchizxrnqvarmz2zu
@@ -229,6 +233,18 @@ packages:
       - supports-color
     dev: true
 
+  /@iconify-json/ic/1.1.10:
+    resolution: {integrity: sha512-EmyoOv/MHYEZcpRtvU/+PTSd3vGv81bpdaUiLzym3XI7Y8kLMWVGr/rnztgb12Mzwi/hHkwfRq1GgdbyNSVPPQ==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-json/line-md/1.1.20:
+    resolution: {integrity: sha512-ebO82ctZuLd4NILc3FI9apej9L3BkSigDbJjvkHS4BYfKkBoHsdO1/ycJq56LhRYyfcurj17zbcmN2a4oPkewg==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
   /@iconify/types/2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
     dev: true
@@ -267,6 +283,10 @@ packages:
       fastq: 1.14.0
     dev: true
 
+  /@popperjs/core/2.11.6:
+    resolution: {integrity: sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==}
+    dev: true
+
   /@prettier/plugin-php/0.19.2_prettier@2.8.1:
     resolution: {integrity: sha512-j4Io//Js9ajKP7vgjKpS0rS8B/HKIJxutUshlbCpXvsP8Cz28MYp2VFJytpS9zyLEfsMPXordNWjkBVvHRL7ow==}
     peerDependencies:
@@ -290,15 +310,6 @@ packages:
       '@types/estree': 1.0.0
       estree-walker: 2.0.2
       picomatch: 2.3.1
-    dev: true
-
-  /@tailwindcss/forms/0.5.3_tailwindcss@3.2.4:
-    resolution: {integrity: sha512-y5mb86JUoiUgBjY/o6FJSFZSEttfb3Q5gllE4xoKjAAD+vBrnIhE4dViwUuow3va8mpH4s9jyUbUbrRGoRdc2Q==}
-    peerDependencies:
-      tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
-    dependencies:
-      mini-svg-data-uri: 1.4.4
-      tailwindcss: 3.2.4_postcss@8.4.19
     dev: true
 
   /@types/estree/1.0.0:
@@ -1946,11 +1957,6 @@ packages:
   /mimic-fn/4.0.0:
     resolution: {integrity: sha512-vqiC06CuhBTUdZH+RYl8sFrL096vA45Ok5ISO6sE/Mr1jRbGH4Csnhi8f3wKVl7x8mO4Au7Ir9D3Oyv1VYMFJw==}
     engines: {node: '>=12'}
-    dev: true
-
-  /mini-svg-data-uri/1.4.4:
-    resolution: {integrity: sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==}
-    hasBin: true
     dev: true
 
   /minimatch/3.1.2:

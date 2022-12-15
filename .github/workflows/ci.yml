@@ -21,7 +21,7 @@ jobs:
       - name: Copy environment file
         run: cp .env.example .env
       - name: Run PHPStan
-        run: vendor/bin/phpstan
+        run: vendor/bin/phpstan --memory-limit=1G
 
   tests:
     runs-on: ubuntu-latest
