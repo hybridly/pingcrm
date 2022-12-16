@@ -4,7 +4,7 @@ jobs:
   phpstan:
     runs-on: ubuntu-latest
     container:
-      image: lorisleiva/laravel-docker:8.1
+      image: lorisleiva/laravel-docker:8.2
 
     steps:
       - name: "Checkout code"
@@ -26,7 +26,7 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     container:
-      image: lorisleiva/laravel-docker:8.1
+      image: lorisleiva/laravel-docker:8.2
 
     steps:
       - name: "Checkout code"
