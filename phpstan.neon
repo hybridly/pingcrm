@@ -5,9 +5,12 @@ parameters:
     paths:
         - app/
         - routes/
+        - database/
 
     # Level 9 is the highest level
     level: 9
 
     ignoreErrors:
         - '#^Method [a-zA-Z0-9\\_]+::[a-zA-Z0-9\\_]+\(\) should return Hybridly\\Contracts\\HybridResponse but returns Hybridly\\Hybridly\|Hybridly\\View\\Factory\.$#'
+        - '#^Call to an undefined method Illuminate\\Database\\Query\\Builder::withTrashed\(\).$#'
+        - '#^Call to an undefined method Illuminate\\Database\\Query\\Builder::onlyTrashed\(\).$#'

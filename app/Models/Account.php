@@ -15,4 +15,10 @@ class Account extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    /** @return HasMany<Organization>  */
+    public function organizations(): HasMany
+    {
+        return $this->hasMany(Organization::class);
+    }
 }

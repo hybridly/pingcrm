@@ -10,6 +10,9 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * @property-read Account $account
+ */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
