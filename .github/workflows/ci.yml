@@ -23,7 +23,7 @@ jobs:
       - name: Run PHPStan
         run: vendor/bin/phpstan --memory-limit=1G
 
-  tests:
+  pestphp:
     runs-on: ubuntu-latest
     container:
       image: lorisleiva/laravel-docker:8.2
@@ -44,5 +44,25 @@ jobs:
         run: cp .env.example .env
       - name: Generate Laravel key
         run: php artisan key:generate
-      - name: Run tests
+      - name: Run Pest tests
         run: php artisan test
+
+  vitest:
+    runs-on: ubuntu-latest
+    container:
+      image: lorisleiva/laravel-docker:8.2
+
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v3
+      - name: Cache Node dependencies
+        id: cache-node
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+      - name: Install Node dependencies
+        if: steps.cache-node.outputs.cache-hit != 'true'
+        run: npm install -g pnpm && pnpm install
+      - name: Run vitest tests
+        run: npm run test
