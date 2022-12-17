@@ -1,6 +1,4 @@
-import { describe, expect, it } from "vitest";
-
-describe("tests", () => {
+describe("basic", () => {
     it("should work", () => {
         expect(1 + 1).toEqual(2);
     });
