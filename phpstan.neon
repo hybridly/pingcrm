@@ -6,6 +6,7 @@ parameters:
         - app/
         - routes/
         - database/
+        - tests/
 
     # Level 9 is the highest level
     level: 9
@@ -14,3 +15,7 @@ parameters:
         - '#^Method [a-zA-Z0-9\\_]+::[a-zA-Z0-9\\_]+\(\) should return Hybridly\\Contracts\\HybridResponse but returns Hybridly\\Hybridly\|Hybridly\\View\\Factory\.$#'
         - '#^Call to an undefined method Illuminate\\Database\\Query\\Builder::withTrashed\(\).$#'
         - '#^Call to an undefined method Illuminate\\Database\\Query\\Builder::onlyTrashed\(\).$#'
+        -
+            message: '#^Undefined variable: \$this$#'
+            paths:
+                - tests/*
