@@ -23,7 +23,7 @@
             class="flex items-center justify-between mb-8 max-w-3xl bg-red-500 rounded"
         >
             <div class="flex items-center">
-                <i-baseline-error-outline
+                <i-ic-baseline-error-outline
                     class="flex-shrink-0 ml-4 mr-2 w-5 h-5 text-white"
                 />
                 <div

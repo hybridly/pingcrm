@@ -7,11 +7,7 @@
                     class="fixed top-0 right-0 left-0 bottom-0 z-[99998] bg-black opacity-20"
                     @click="show = false"
                 />
-                <div
-                    ref="dropdownRef"
-                    class="absolute z-[99999]"
-                    @click.stop="show = false"
-                >
+                <div ref="dropdownRef" class="absolute z-[99999]">
                     <slot name="dropdown" />
                 </div>
             </div>

@@ -28,3 +28,6 @@ _ide_helper.php
 _ide_helper_models.php
 
 .eslintrc-auto-import.json
+
+tests/Vitest/auto-imports.d.ts
+coverage

@@ -21,5 +21,5 @@ module.exports = {
         "vue/multi-word-component-names": "off",
         "vue/require-default-prop": "off",
     },
-    globals: { App: true },
+    globals: { App: true, Paginator: true },
 };

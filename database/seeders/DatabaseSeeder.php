@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Account;
+use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -25,6 +26,10 @@ class DatabaseSeeder extends Seeder
                 "owner" => true,
             ]);
         User::factory(5)
+            ->for($account)
+            ->create();
+
+        $organizations = Organization::factory(100)
             ->for($account)
             ->create();
     }
