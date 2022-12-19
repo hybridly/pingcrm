@@ -36,8 +36,7 @@ Route::middleware("auth")->group(function () {
         "dashboard.index",
     );
 
-    Route::resource(
-        "organizations",
-        OrganizationsController::class,
-    )->withTrashed();
+    Route::resource("organizations", OrganizationsController::class)
+        ->except("show")
+        ->withTrashed();
 });
