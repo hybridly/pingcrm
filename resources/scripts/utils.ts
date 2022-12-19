@@ -14,3 +14,11 @@ export function mapValuesToNull<T extends object>(
         {} as { [P in keyof T]: null }
     );
 }
+
+export function pickDefinedValues<T extends object>(object: T): Partial<T> {
+    return Object.entries(object).reduce((previousValue, [key, value]) => {
+        if (value)
+            previousValue = Object.assign(previousValue, { [key]: value });
+        return previousValue;
+    }, {} as Partial<T>);
+}

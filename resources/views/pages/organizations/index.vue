@@ -99,15 +99,12 @@ const props = defineProps<{
 }>();
 const form = ref(props.filters);
 
-const throttledSubmit = useThrottleFn(
-    () =>
-        router.reload({
-            method: "GET",
-            data: form.value,
-            preserveState: true,
-        }),
-    250
-);
+const throttledSubmit = useThrottleFn(() => {
+    router.get(route("organizations.index"), {
+        data: pickDefinedValues(form.value),
+        preserveState: true,
+    });
+}, 250);
 watch(form, throttledSubmit, { deep: true });
 
 const onReset = () => {
