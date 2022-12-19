@@ -17,7 +17,10 @@
                     <option value="only">Only Trashed</option>
                 </select>
             </search-filter>
-            <router-link class="btn-indigo">
+            <router-link
+                class="btn-indigo"
+                :href="route('organizations.create')"
+            >
                 <span>Create</span>
                 <span class="hidden md:inline">&nbsp;Organization</span>
             </router-link>

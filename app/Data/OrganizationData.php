@@ -9,9 +9,9 @@ class OrganizationData extends Data
 {
     public function __construct(
         public readonly int $id,
-        public readonly string $name,
-        public readonly string $city,
-        public readonly string $phone,
+        public readonly ?string $name,
+        public readonly ?string $city,
+        public readonly ?string $phone,
         public readonly ?Carbon $deleted_at,
     ) {
     }

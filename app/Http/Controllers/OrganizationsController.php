@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Data\OrganizationData;
 use App\Data\SearchOrganizationData;
+use App\Data\StoreOrganizationData;
 use App\Models\Organization;
 use Hybridly\Contracts\HybridResponse;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,15 +41,24 @@ class OrganizationsController extends Controller
      */
     public function create(): HybridResponse
     {
-        return hybridly();
+        return hybridly("organizations.create");
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): HybridResponse
+    public function store(StoreOrganizationData $data): RedirectResponse
     {
-        return hybridly();
+        $user = Auth::user();
+        if (is_null($user)) {
+            throw new AuthenticationException();
+        }
+
+        $user->account->organizations()->create($data->toArray());
+        return to_route("organizations.index")->with(
+            "success",
+            "Organization created.",
+        );
     }
 
     /**
