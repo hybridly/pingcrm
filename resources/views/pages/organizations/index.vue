@@ -40,6 +40,7 @@
                     <td class="border-t">
                         <router-link
                             class="px-6 py-4 flex items-center focus:text-indigo-500"
+                            :href="editLink(organization)"
                         >
                             {{ organization.name }}
                             <i-ic-baseline-delete
@@ -52,6 +53,7 @@
                         <router-link
                             class="px-6 py-4 flex items-center"
                             tabindex="-1"
+                            :href="editLink(organization)"
                         >
                             {{ organization.city }}
                         </router-link>
@@ -60,6 +62,7 @@
                         <router-link
                             class="px-6 py-4 flex items-center"
                             tabindex="-1"
+                            :href="editLink(organization)"
                         >
                             {{ organization.phone }}
                         </router-link>
@@ -68,6 +71,7 @@
                         <router-link
                             class="px-4 flex items-center"
                             tabindex="-1"
+                            :href="editLink(organization)"
                         >
                             <i-ic-round-keyboard-arrow-right
                                 class="w-7 h-7 text-gray-400"
@@ -110,4 +114,9 @@ watch(form, throttledSubmit, { deep: true });
 const onReset = () => {
     form.value = mapValuesToNull(form);
 };
+
+const editLink = (organization: App.Data.OrganizationData) =>
+    route("organizations.edit", {
+        organization: organization.id,
+    });
 </script>

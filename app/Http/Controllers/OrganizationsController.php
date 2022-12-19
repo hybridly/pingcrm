@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\EditOrganizationData;
 use App\Data\OrganizationData;
 use App\Data\SearchOrganizationData;
 use App\Data\StoreOrganizationData;
@@ -9,7 +10,6 @@ use App\Models\Organization;
 use Hybridly\Contracts\HybridResponse;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class OrganizationsController extends Controller
@@ -66,22 +66,46 @@ class OrganizationsController extends Controller
      */
     public function edit(Organization $organization): HybridResponse
     {
-        return hybridly();
+        return hybridly("organizations.edit", [
+            "organization" => EditOrganizationData::from($organization),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Organization $id): HybridResponse
-    {
-        return hybridly();
+    public function update(
+        StoreOrganizationData $data,
+        Organization $organization,
+    ): RedirectResponse {
+        $organization->update($data->toArray());
+        return to_route("organizations.index")->with(
+            "success",
+            "Organization updated.",
+        );
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Organization $organization): HybridResponse
+    public function destroy(Organization $organization): RedirectResponse
     {
-        return hybridly();
+        $organization->delete();
+        return to_route("organizations.index")->with(
+            "success",
+            "Organization deleted.",
+        );
+    }
+
+    /**
+     * Restore the specified resource.
+     */
+    public function restore(Organization $organization): RedirectResponse
+    {
+        $organization->restore();
+        return to_route("organizations.index")->with(
+            "success",
+            "Organization restored.",
+        );
     }
 }

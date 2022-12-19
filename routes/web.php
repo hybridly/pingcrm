@@ -39,4 +39,10 @@ Route::middleware("auth")->group(function () {
     Route::resource("organizations", OrganizationsController::class)
         ->except("show")
         ->withTrashed();
+    Route::put("organizations/{organization}/restore", [
+        OrganizationsController::class,
+        "restore",
+    ])
+        ->withTrashed()
+        ->name("organizations.restore");
 });
