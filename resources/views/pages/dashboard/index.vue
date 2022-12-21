@@ -1,6 +1,6 @@
 <template layout>
     <div>
-        <h1 class="mb-8 text-3xl font-bold">Dashboard</h1>
+        <h1 class="mb-8 text-3xl font-bold">{{ t("dashboard.header") }}</h1>
         <p class="mb-8 leading-normal">
             <i18n-t keypath="dashboard.welcomeMessage">
                 <template #hybridly>
@@ -16,5 +16,7 @@
 </template>
 
 <script setup lang="ts">
-useHead({ title: "Dashboard" });
+const { t } = useI18n();
+
+useHead({ title: t("dashboard.title") });
 </script>

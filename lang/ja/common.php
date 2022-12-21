@@ -7,8 +7,8 @@ return [
     "searchPlaceholder" => "検索",
     "resetLabel" => "リセット",
     "formError" => "フォームエラーが:countつあります。",
-    "myProfile" => "My Profile",
-    "manageUsers" => "Manage Users",
-    "logoutLabel" => "Logout",
-    "restoreLabel" => "Restore",
+    "myProfile" => "プロフィール",
+    "manageUsers" => "ユーザー管理",
+    "logoutLabel" => "ログアウト",
+    "restoreLabel" => "復元",
 ];

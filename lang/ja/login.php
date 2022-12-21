@@ -1,10 +1,10 @@
 <?php
 
 return [
-    "greetings" => "Welcome Back!",
-    "email" => "Email",
-    "password" => "Password",
-    "remember" => "Remember Me",
-    "loginLabel" => "Login",
-    "title" => "Login - Ping CRM",
+    "greetings" => "お帰りなさい",
+    "email" => "メールアドレス",
+    "password" => "パスワード",
+    "remember" => "次回から自動ログインする",
+    "loginLabel" => "ログイン",
+    "title" => "ログイン｜Ping CRM",
 ];

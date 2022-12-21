@@ -9,10 +9,9 @@ declare module "vue-i18n" {
 }
 
 const i18n = createI18n<[MessageSchema], "en" | "ja">({
-    locale: "ja",
-    fallbackLocale: "en",
+    locale: "en",
     legacy: false,
-    messages
+    messages,
 });
 
 export default i18n;

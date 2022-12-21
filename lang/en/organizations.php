@@ -1,6 +1,7 @@
 <?php
 
 return [
+    "menuTitle" => "Organizations",
     "attributes" => [
         "name" => "Name",
         "email" => "Email",
