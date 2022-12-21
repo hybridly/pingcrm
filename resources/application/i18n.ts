@@ -8,10 +8,11 @@ declare module "vue-i18n" {
     export interface DefineLocaleMessage extends MessageSchema {}
 }
 
-const i18n = createI18n<[MessageSchema], "en">({
-    locale: "en",
+const i18n = createI18n<[MessageSchema], "en" | "ja">({
+    locale: "ja",
+    fallbackLocale: "en",
     legacy: false,
-    messages,
+    messages
 });
 
 export default i18n;
