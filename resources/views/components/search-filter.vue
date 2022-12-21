@@ -8,9 +8,9 @@
             >
                 <template #default>
                     <div class="flex items-baseline">
-                        <span class="hidden text-gray-700 md:inline"
-                            >Filter</span
-                        >
+                        <span class="hidden text-gray-700 md:inline">
+                            {{ t("common.filterLabel") }}
+                        </span>
                         <svg
                             class="w-2 h-2 fill-gray-700 md:ml-2"
                             xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +36,7 @@
                 autocomplete="off"
                 type="text"
                 name="search"
-                placeholder="Search…"
+                :placeholder="t('common.searchPlaceholder')"
             />
         </div>
         <button
@@ -44,12 +44,14 @@
             type="button"
             @click="$emit('reset')"
         >
-            Reset
+            {{ t("common.resetLabel") }}
         </button>
     </div>
 </template>
 
 <script setup lang="ts">
+const { t } = useI18n();
+
 const props = defineProps<{ modelValue: string | null }>();
 const emit = defineEmits<{
     (e: "update:modelValue", value: string | null): void;

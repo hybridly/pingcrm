@@ -2,6 +2,7 @@
 
 namespace App\Data;
 
+use Illuminate\Support\Arr;
 use Spatie\LaravelData\Attributes\Validation\Email;
 use Spatie\LaravelData\Attributes\Validation\Max;
 use Spatie\LaravelData\Data;
@@ -19,6 +20,12 @@ class StoreOrganizationData extends Data
         public readonly ?CountryField $country,
         #[Max(100)] public readonly ?string $postal_code,
     ) {
+    }
+
+    /** @return array<string,string> */
+    public static function attributes(): array
+    {
+        return __("organizations.attributes");
     }
 }
 

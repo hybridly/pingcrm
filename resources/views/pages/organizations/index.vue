@@ -1,36 +1,56 @@
 <template layout>
     <div>
-        <h1 class="mb-8 font-bold text-3xl">Organizations</h1>
+        <h1 class="mb-8 font-bold text-3xl">
+            {{ t("organizations.index.header") }}
+        </h1>
         <div class="mb-6 flex justify-between items-center">
             <search-filter
                 v-model="form.keyword"
                 class="w-full max-w-md mr-4"
                 @reset="onReset"
             >
-                <label class="block text-gray-700">Trashed:</label>
+                <label class="block text-gray-700">
+                    {{ t("organizations.index.trashedLabel") }}
+                </label>
                 <select
                     v-model="form.trashedOption"
                     class="mt-1 w-full form-select"
                 >
-                    <option :value="null">No Trashed</option>
-                    <option value="with">With Trashed</option>
-                    <option value="only">Only Trashed</option>
+                    <option :value="null">
+                        {{ t("organizations.index.noTrashed") }}
+                    </option>
+                    <option value="with">
+                        {{ t("organizations.index.withTrashed") }}
+                    </option>
+                    <option value="only">
+                        {{ t("organizations.index.onlyTrashed") }}
+                    </option>
                 </select>
             </search-filter>
             <router-link
                 class="btn-indigo"
                 :href="route('organizations.create')"
             >
-                <span>Create</span>
-                <span class="hidden md:inline">&nbsp;Organization</span>
+                <span class="md:hidden">
+                    {{ t("organizations.index.createOrganizationMobile") }}
+                </span>
+                <span class="hidden md:inline">
+                    {{ t("organizations.index.createOrganization") }}
+                </span>
             </router-link>
         </div>
         <div class="bg-white rounded-md shadow overflow-x-auto">
             <table class="w-full whitespace-nowrap">
                 <tr class="text-left font-bold">
-                    <th class="px-6 pt-6 pb-4">Name</th>
-                    <th class="px-6 pt-6 pb-4">City</th>
-                    <th class="px-6 pt-6 pb-4" colspan="2">Phone</th>
+                    <th class="px-6 pt-6 pb-4">
+                        {{ t("organizations.attributes.name") }}
+                    </th>
+                    <th class="px-6 pt-6 pb-4">
+                        {{ t("organizations.attributes.city") }}
+                    </th>
+                    <th class="px-6 pt-6 pb-4" colspan="2">
+                        {{ t("organizations.attributes.phone") }}
+                    </th>
                 </tr>
                 <tr
                     v-for="organization in organizations.data"
@@ -81,7 +101,7 @@
                 </tr>
                 <tr v-if="organizations.data.length === 0">
                     <td class="border-t px-6 py-4" colspan="4">
-                        No organizations found.
+                        {{ t("organizations.index.noneFound") }}
                     </td>
                 </tr>
             </table>
@@ -95,7 +115,9 @@
 </template>
 
 <script setup lang="ts">
-useHead({ title: "Organizations" });
+const { t } = useI18n();
+
+useHead({ title: t("organizations.index.title") });
 
 const props = defineProps<{
     filters: App.Data.SearchOrganizationData;

@@ -13,14 +13,14 @@
             >
                 <div class="px-10 py-12">
                     <h1 class="text-center text-3xl font-bold">
-                        Welcome Back!
+                        {{ t("login.greetings") }}
                     </h1>
                     <div class="mt-6 mx-auto w-24 border-b-2" />
                     <text-input
                         v-model="form.fields.email"
                         :error="form.errors.email"
                         class="mt-10"
-                        label="Email"
+                        :label="t('login.email')"
                         type="email"
                         autofocus
                         autocapitalize="off"
@@ -29,7 +29,7 @@
                         v-model="form.fields.password"
                         :error="form.errors.password"
                         class="mt-6"
-                        label="Password"
+                        :label="t('login.password')"
                         type="password"
                     />
                     <label
@@ -42,7 +42,7 @@
                             class="mr-1"
                             type="checkbox"
                         />
-                        <span class="text-sm">Remember Me</span>
+                        <span class="text-sm">{{ t("login.remember") }}</span>
                     </label>
                 </div>
                 <div
@@ -53,7 +53,7 @@
                         class="btn-indigo ml-auto"
                         type="submit"
                     >
-                        Login
+                        {{ t("login.loginLabel") }}
                     </loading-button>
                 </div>
             </form>
@@ -62,7 +62,9 @@
 </template>
 
 <script setup lang="ts">
-useHead({ title: "Login - Ping CRM" });
+const { t } = useI18n();
+
+useHead({ title: t("login.title") });
 
 const form = useForm<App.Data.LoginData>({
     method: "POST",

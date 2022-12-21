@@ -19,3 +19,6 @@ parameters:
             message: '#^Undefined variable: \$this$#'
             paths:
                 - tests/*
+        -
+            message: '#^Method App\\Data\\[a-zA-Z0-9\\_]+\:\:attributes\(\) should return array\<string, string\> but returns mixed\.$#'
+            path: app/Data/*

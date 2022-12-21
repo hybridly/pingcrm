@@ -14,11 +14,12 @@
             type="button"
             @click="$emit('restore')"
         >
-            Restore
+            {{ t("common.restoreLabel") }}
         </button>
     </div>
 </template>
 
 <script setup lang="ts">
+const { t } = useI18n();
 defineEmits(["restore"]);
 </script>

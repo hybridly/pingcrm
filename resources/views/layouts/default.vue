@@ -56,20 +56,23 @@
                                     <router-link
                                         class="block px-6 py-2 hover:text-white hover:bg-indigo-500"
                                         :href="`/users/${user?.id}/edit`"
-                                        >My Profile</router-link
                                     >
+                                        {{ t("common.myProfile") }}
+                                    </router-link>
                                     <router-link
                                         class="block px-6 py-2 hover:text-white hover:bg-indigo-500"
                                         href="/users"
-                                        >Manage Users</router-link
                                     >
+                                        {{ t("common.manageUsers") }}
+                                    </router-link>
                                     <router-link
                                         class="block px-6 py-2 w-full text-left hover:text-white hover:bg-indigo-500"
                                         href="/logout"
                                         method="delete"
                                         as="button"
-                                        >Logout</router-link
                                     >
+                                        {{ t("common.logoutLabel") }}
+                                    </router-link>
                                 </div>
                             </template>
                         </dropdown>
@@ -93,7 +96,9 @@
 </template>
 
 <script setup lang="ts">
-useHead({ titleTemplate: (title) => `${title} - Ping CRM` });
+const { t } = useI18n();
+
+useHead({ titleTemplate: (title) => t("common.titleTemplate", { title }) });
 
 const user = useProperty("security.user");
 </script>

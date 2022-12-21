@@ -1,13 +1,7 @@
 <template layout>
     <div>
         <h1 class="mb-8 text-3xl font-bold">
-            <router-link
-                class="text-indigo-400 hover:text-indigo-600"
-                :href="route('organizations.index')"
-            >
-                Organizations
-            </router-link>
-            <span class="text-indigo-400 font-medium">/</span> Create
+            {{ t("organizations.create.header") }}
         </h1>
         <div class="max-w-3xl bg-white rounded-md shadow overflow-hidden">
             <form @submit.prevent="form.submit">
@@ -16,7 +10,7 @@
                         v-model="form.fields.name"
                         :error="form.errors.name"
                         class="pb-8 pr-6 w-full lg:w-1/2"
-                        label="Name"
+                        :label="t('organizations.attributes.name')"
                         required
                         :maxlength="100"
                     />
@@ -24,7 +18,7 @@
                         v-model="form.fields.email"
                         :error="form.errors.email"
                         class="pb-8 pr-6 w-full lg:w-1/2"
-                        label="Email"
+                        :label="t('organizations.attributes.email')"
                         type="email"
                         :maxlength="50"
                     />
@@ -32,45 +26,49 @@
                         v-model="form.fields.phone"
                         :error="form.errors.phone"
                         class="pb-8 pr-6 w-full lg:w-1/2"
-                        label="Phone"
+                        :label="t('organizations.attributes.phone')"
                         :maxlength="50"
                     />
                     <text-input
                         v-model="form.fields.address"
                         :error="form.errors.address"
                         class="pb-8 pr-6 w-full lg:w-1/2"
-                        label="Address"
+                        :label="t('organizations.attributes.address')"
                         :maxlength="150"
                     />
                     <text-input
                         v-model="form.fields.city"
                         :error="form.errors.city"
                         class="pb-8 pr-6 w-full lg:w-1/2"
-                        label="City"
+                        :label="t('organizations.attributes.city')"
                         :maxlength="50"
                     />
                     <text-input
                         v-model="form.fields.region"
                         :error="form.errors.region"
                         class="pb-8 pr-6 w-full lg:w-1/2"
-                        label="Province/State"
+                        :label="t('organizations.attributes.region')"
                         :maxlength="50"
                     />
                     <select-input
                         v-model="form.fields.country"
                         :error="form.errors.country"
                         class="pb-8 pr-6 w-full lg:w-1/2"
-                        label="Country"
+                        :label="t('organizations.attributes.country')"
                     >
                         <option :value="null" />
-                        <option value="CA">Canada</option>
-                        <option value="US">United States</option>
+                        <option value="CA">
+                            {{ t("organizations.countries.CA") }}
+                        </option>
+                        <option value="US">
+                            {{ t("organizations.countries.US") }}
+                        </option>
                     </select-input>
                     <text-input
                         v-model="form.fields.postal_code"
                         :error="form.errors.postal_code"
                         class="pb-8 pr-6 w-full lg:w-1/2"
-                        label="Postal code"
+                        :label="t('organizations.attributes.postal_code')"
                     />
                 </div>
                 <div
@@ -81,7 +79,7 @@
                         class="btn-indigo"
                         type="submit"
                     >
-                        Create Organization
+                        {{ t("organizations.create.createLabel") }}
                     </loading-button>
                 </div>
             </form>
@@ -90,7 +88,9 @@
 </template>
 
 <script setup lang="ts">
-useHead({ title: "Create Organization" });
+const { t } = useI18n();
+
+useHead({ title: t("organizations.create.title") });
 
 const form = useForm<App.Data.StoreOrganizationData>({
     fields: {
@@ -105,5 +105,6 @@ const form = useForm<App.Data.StoreOrganizationData>({
     },
     method: "POST",
     url: route("organizations.store"),
+    transform: pickDefinedValues,
 });
 </script>

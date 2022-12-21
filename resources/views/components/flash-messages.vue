@@ -33,13 +33,11 @@
                     {{ flash.error }}
                 </div>
                 <div v-else class="py-4 text-white text-sm font-medium">
-                    <span v-if="Object.keys(errors).length === 1"
-                        >There is one form error.</span
-                    >
-                    <span v-else
-                        >There are {{ Object.keys(errors).length }} form
-                        errors.</span
-                    >
+                    {{
+                        t("common.formError", {
+                            count: Object.keys(errors).length,
+                        })
+                    }}
                 </div>
             </div>
             <button type="button" class="group mr-2 p-2" @click="show = false">
@@ -52,6 +50,7 @@
 </template>
 
 <script setup lang="ts">
+const { t } = useI18n();
 const flash = useProperty("flash");
 const errors = useProperty("errors");
 const show = ref(true);

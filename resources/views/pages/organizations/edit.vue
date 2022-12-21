@@ -1,21 +1,20 @@
 <template layout>
     <div>
         <h1 class="mb-8 text-3xl font-bold">
-            <router-link
-                class="text-indigo-400 hover:text-indigo-600"
-                :href="route('organizations.index')"
-            >
-                Organizations
-            </router-link>
-            <span class="text-indigo-400 font-medium">/</span>
-            {{ form.fields.name }}
+            <i18n-t keypath="organizations.edit.header">
+                <template #name>
+                    <span class="text-sm">
+                        {{ form.fields.name }}
+                    </span>
+                </template>
+            </i18n-t>
         </h1>
         <trashed-message
             v-if="organization.deleted_at"
             class="mb-6"
             @restore="restore"
         >
-            This organization has been deleted.
+            {{ t("organizations.edit.isDeleted") }}
         </trashed-message>
         <div class="max-w-3xl bg-white rounded-md shadow overflow-hidden">
             <form @submit.prevent="form.submit">
@@ -24,7 +23,7 @@
                         v-model="form.fields.name"
                         :error="form.errors.name"
                         class="pb-8 pr-6 w-full lg:w-1/2"
-                        label="Name"
+                        :label="t('organizations.attributes.name')"
                         required
                         :maxlength="100"
                     />
@@ -32,7 +31,7 @@
                         v-model="form.fields.email"
                         :error="form.errors.email"
                         class="pb-8 pr-6 w-full lg:w-1/2"
-                        label="Email"
+                        :label="t('organizations.attributes.email')"
                         type="email"
                         :maxlength="50"
                     />
@@ -40,45 +39,49 @@
                         v-model="form.fields.phone"
                         :error="form.errors.phone"
                         class="pb-8 pr-6 w-full lg:w-1/2"
-                        label="Phone"
+                        :label="t('organizations.attributes.phone')"
                         :maxlength="50"
                     />
                     <text-input
                         v-model="form.fields.address"
                         :error="form.errors.address"
                         class="pb-8 pr-6 w-full lg:w-1/2"
-                        label="Address"
+                        :label="t('organizations.attributes.address')"
                         :maxlength="150"
                     />
                     <text-input
                         v-model="form.fields.city"
                         :error="form.errors.city"
                         class="pb-8 pr-6 w-full lg:w-1/2"
-                        label="City"
+                        :label="t('organizations.attributes.city')"
                         :maxlength="50"
                     />
                     <text-input
                         v-model="form.fields.region"
                         :error="form.errors.region"
                         class="pb-8 pr-6 w-full lg:w-1/2"
-                        label="Province/State"
+                        :label="t('organizations.attributes.region')"
                         :maxlength="50"
                     />
                     <select-input
                         v-model="form.fields.country"
                         :error="form.errors.country"
                         class="pb-8 pr-6 w-full lg:w-1/2"
-                        label="Country"
+                        :label="t('organizations.attributes.country')"
                     >
                         <option :value="null" />
-                        <option value="CA">Canada</option>
-                        <option value="US">United States</option>
+                        <option value="CA">
+                            {{ t("organizations.countries.CA") }}
+                        </option>
+                        <option value="US">
+                            {{ t("organizations.countries.US") }}
+                        </option>
                     </select-input>
                     <text-input
                         v-model="form.fields.postal_code"
                         :error="form.errors.postal_code"
                         class="pb-8 pr-6 w-full lg:w-1/2"
-                        label="Postal code"
+                        :label="t('organizations.attributes.postal_code')"
                     />
                 </div>
                 <div
@@ -91,14 +94,14 @@
                         type="button"
                         @click="destroy"
                     >
-                        Delete Organization
+                        {{ t("organizations.edit.deleteLabel") }}
                     </button>
                     <loading-button
                         :loading="form.processing"
                         class="btn-indigo"
                         type="submit"
                     >
-                        Update Organization
+                        {{ t("organizations.edit.updateLabel") }}
                     </loading-button>
                 </div>
             </form>
@@ -107,10 +110,16 @@
 </template>
 
 <script setup lang="ts">
+const { t } = useI18n();
+
 const props = defineProps<{
     organization: App.Data.EditOrganizationData;
 }>();
-useHead({ title: props.organization.data.name });
+useHead({
+    title: t("organizations.edit.title", {
+        name: props.organization.data.name,
+    }),
+});
 
 const form = useForm<App.Data.StoreOrganizationData>({
     fields: props.organization.data,
@@ -119,7 +128,7 @@ const form = useForm<App.Data.StoreOrganizationData>({
 });
 
 const destroy = () => {
-    if (confirm("Are you sure you want to delete this organization?")) {
+    if (confirm(t("organizations.delete.confirmMessage"))) {
         router.delete(
             route("organizations.destroy", {
                 organization: props.organization.id,
@@ -129,7 +138,7 @@ const destroy = () => {
 };
 
 const restore = () => {
-    if (confirm("Are you sure you want to restore this organization?")) {
+    if (confirm(t("organizations.restore.confirmMessage"))) {
         router.put(
             route("organizations.restore", {
                 organization: props.organization.id,
