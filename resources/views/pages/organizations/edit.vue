@@ -194,9 +194,11 @@ const props = defineProps<{
     organization: App.Data.EditOrganizationData;
 }>();
 useHead({
-    title: t("organizations.edit.title", {
-        name: props.organization.data.name,
-    }),
+    title: computed(() =>
+        t("organizations.edit.title", {
+            name: props.organization.data.name,
+        })
+    ),
 });
 
 const form = useForm<App.Data.StoreOrganizationData>({

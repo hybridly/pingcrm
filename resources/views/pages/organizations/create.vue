@@ -90,7 +90,7 @@
 <script setup lang="ts">
 const { t } = useI18n();
 
-useHead({ title: t("organizations.create.title") });
+useHead({ title: computed(() => t("organizations.create.title")) });
 
 const form = useForm<App.Data.StoreOrganizationData>({
     fields: {

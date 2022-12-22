@@ -117,7 +117,7 @@
 <script setup lang="ts">
 const { t } = useI18n();
 
-useHead({ title: t("organizations.index.title") });
+useHead({ title: computed(() => t("organizations.index.title")) });
 
 const props = defineProps<{
     filters: App.Data.SearchData;
