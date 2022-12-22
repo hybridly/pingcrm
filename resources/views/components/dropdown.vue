@@ -1,5 +1,10 @@
 <template>
-    <button ref="buttonRef" type="button" @click="show = true">
+    <button
+        ref="buttonRef"
+        type="button"
+        class="min-w-max"
+        @click="show = true"
+    >
         <slot />
         <teleport v-if="show" to="#dropdown">
             <div>

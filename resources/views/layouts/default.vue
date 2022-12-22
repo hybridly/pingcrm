@@ -31,53 +31,15 @@
                         <div class="mr-4 mt-1">
                             {{ user?.account.name }}
                         </div>
-                        <dropdown class="mt-1" placement="bottom-end">
-                            <template #default>
-                                <div
-                                    class="group flex items-center cursor-pointer select-none"
-                                >
-                                    <div
-                                        class="mr-1 text-gray-700 group-hover:text-indigo-600 focus:text-indigo-600 whitespace-nowrap"
-                                    >
-                                        <span>{{ user?.first_name }}</span>
-                                        <span class="hidden md:inline"
-                                            >&nbsp;{{ user?.last_name }}</span
-                                        >
-                                    </div>
-                                    <i-ic-round-keyboard-arrow-down
-                                        class="w-6 h-6 text-gray-700 group-hover:text-indigo-600 focus:text-indigo-600"
-                                    />
-                                </div>
-                            </template>
-                            <template #dropdown>
-                                <div
-                                    class="mt-2 py-2 text-sm bg-white rounded shadow-xl"
-                                >
-                                    <router-link
-                                        class="block px-6 py-2 hover:text-white hover:bg-indigo-500"
-                                        :href="`/users/${user?.id}/edit`"
-                                        >My Profile</router-link
-                                    >
-                                    <router-link
-                                        class="block px-6 py-2 hover:text-white hover:bg-indigo-500"
-                                        href="/users"
-                                        >Manage Users</router-link
-                                    >
-                                    <router-link
-                                        class="block px-6 py-2 w-full text-left hover:text-white hover:bg-indigo-500"
-                                        href="/logout"
-                                        method="delete"
-                                        as="button"
-                                        >Logout</router-link
-                                    >
-                                </div>
-                            </template>
-                        </dropdown>
+                        <div class="mt-1 flex gap-x-3">
+                            <locale-switcher />
+                            <user-menu />
+                        </div>
                     </div>
                 </div>
                 <div class="md:flex md:flex-grow md:overflow-hidden">
                     <main-menu
-                        class="hidden flex-shrink-0 p-12 w-56 bg-indigo-800 overflow-y-auto md:block"
+                        class="hidden flex-shrink-0 p-11 w-56 bg-indigo-800 overflow-y-auto md:block"
                     />
                     <div
                         class="px-4 py-8 md:flex-1 md:p-12 md:overflow-y-auto"
@@ -93,7 +55,9 @@
 </template>
 
 <script setup lang="ts">
-useHead({ titleTemplate: (title) => `${title} - Ping CRM` });
+const { t } = useI18n();
+
+useHead({ titleTemplate: (title) => t("common.titleTemplate", { title }) });
 
 const user = useProperty("security.user");
 </script>

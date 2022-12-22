@@ -19,6 +19,7 @@ class HandleHybridRequests extends Middleware
                 "user" => UserData::optional(auth()->user()),
             ],
             "currentRoute" => Route::currentRouteName(),
+            "locale" => app()->getLocale(),
         ]);
     }
 }

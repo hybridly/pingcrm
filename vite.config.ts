@@ -24,6 +24,10 @@ export default defineConfig({
                 condition: (file) =>
                     ["Data.php", "Enums/"].some((kw) => file.includes(kw)),
             },
+            {
+                run: ["php", "artisan", "hybridly:i18n"],
+                condition: (file) => file.includes("lang/"),
+            },
         ]),
         hybridly(),
         vue(),
@@ -46,7 +50,13 @@ export default defineConfig({
         }),
         autoimport({
             dts: "resources/types/auto-imports.d.ts",
-            imports: ["vue", "@vueuse/core", "@vueuse/head", hybridlyImports],
+            imports: [
+                "vue",
+                "@vueuse/core",
+                "@vueuse/head",
+                "vue-i18n",
+                hybridlyImports,
+            ],
             vueTemplate: true,
             dirs: ["./resources/scripts"],
             eslintrc: { enabled: true },

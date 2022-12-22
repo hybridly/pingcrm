@@ -57,7 +57,7 @@ class OrganizationsController extends Controller
         $user->account->organizations()->create($data->toArray());
         return to_route("organizations.index")->with(
             "success",
-            "Organization created.",
+            __("organizations.create.successFlash"),
         );
     }
 
@@ -81,7 +81,7 @@ class OrganizationsController extends Controller
         $organization->update($data->toArray());
         return to_route("organizations.index")->with(
             "success",
-            "Organization updated.",
+            __("organizations.edit.successFlash"),
         );
     }
 
@@ -93,7 +93,7 @@ class OrganizationsController extends Controller
         $organization->delete();
         return to_route("organizations.index")->with(
             "success",
-            "Organization deleted.",
+            __("organizations.delete.successFlash"),
         );
     }
 
@@ -105,7 +105,7 @@ class OrganizationsController extends Controller
         $organization->restore();
         return to_route("organizations.index")->with(
             "success",
-            "Organization restored.",
+            __("organizations.restore.successFlash"),
         );
     }
 }

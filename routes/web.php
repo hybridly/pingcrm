@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\OrganizationsController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,10 @@ Route::delete("logout", [
     AuthenticatedSessionController::class,
     "destroy",
 ])->name("logout");
+
+Route::post("locale/{locale}", [LocaleController::class, "set_locale"])->name(
+    "locale.set",
+);
 
 Route::middleware("auth")->group(function () {
     Route::get("/", [DashboardController::class, "index"])->name(
