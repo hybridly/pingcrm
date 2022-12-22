@@ -27,6 +27,7 @@ class ContactsController extends Controller
             "contacts" => ContactData::collection(
                 $user->account
                     ->contacts()
+                    ->with("organization")
                     ->orderByName()
                     ->filter($data)
                     ->paginate(10)
