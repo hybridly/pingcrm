@@ -7,7 +7,7 @@
                     <a
                         class="text-indigo-500 hover:text-orange-600 underline"
                         href="https://hybridly.dev/"
-                        >{{ $t("common.hybridly") }}</a
+                        >{{ t("common.hybridly") }}</a
                     >
                 </template>
             </i18n-t>
