@@ -4,18 +4,20 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 
 class SetLocale
 {
-    const SESSION_KEY = "locale";
-    const LOCALES = ["en", "ja"];
+    private const SESSION_KEY = "locale";
 
     public function handle(Request $request, Closure $next): mixed
     {
         if (!session()->has(self::SESSION_KEY)) {
+            $available_locales = $this->getAvailableLocales();
             session()->put(
                 self::SESSION_KEY,
-                $request->getPreferredLanguage(self::LOCALES),
+                $request->getPreferredLanguage($available_locales),
             );
         }
 
@@ -24,5 +26,14 @@ class SetLocale
         app()->setLocale($locale);
 
         return $next($request);
+    }
+
+    /** @return array<string> */
+    private function getAvailableLocales(): array
+    {
+        return Arr::map(
+            Storage::disk("local")->directories(lang_path()),
+            fn($directory) => basename($directory),
+        );
     }
 }
