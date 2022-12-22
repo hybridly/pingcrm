@@ -67,7 +67,9 @@ class OrganizationsController extends Controller
     public function edit(Organization $organization): HybridResponse
     {
         return hybridly("organizations.edit", [
-            "organization" => EditOrganizationData::from($organization),
+            "organization" => EditOrganizationData::from(
+                $organization->load("contacts"),
+            ),
         ]);
     }
 
