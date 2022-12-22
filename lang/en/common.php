@@ -11,4 +11,8 @@ return [
     "manageUsers" => "Manage Users",
     "logoutLabel" => "Logout",
     "restoreLabel" => "Restore",
+    "countries" => [
+        "CA" => "Canada",
+        "US" => "United States",
+    ],
 ];

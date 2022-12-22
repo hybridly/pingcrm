@@ -5,7 +5,7 @@ namespace App\Data;
 use Spatie\LaravelData\Data;
 use Spatie\TypeScriptTransformer\Attributes\TypeScript;
 
-class SearchOrganizationData extends Data
+class SearchData extends Data
 {
     public function __construct(
         public readonly ?string $keyword,

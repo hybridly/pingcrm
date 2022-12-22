@@ -12,10 +12,6 @@ return [
         "country" => "Country",
         "postal_code" => "Postal Code",
     ],
-    "countries" => [
-        "CA" => "Canada",
-        "US" => "United States",
-    ],
     "index" => [
         "title" => "Organizations",
         "header" => "Organizations",

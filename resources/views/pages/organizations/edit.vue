@@ -71,10 +71,10 @@
                     >
                         <option :value="null" />
                         <option value="CA">
-                            {{ t("organizations.countries.CA") }}
+                            {{ t("common.countries.CA") }}
                         </option>
                         <option value="US">
-                            {{ t("organizations.countries.US") }}
+                            {{ t("common.countries.US") }}
                         </option>
                     </select-input>
                     <text-input
