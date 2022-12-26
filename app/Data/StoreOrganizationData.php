@@ -17,7 +17,7 @@ class StoreOrganizationData extends Data
         #[Max(50)] public readonly ?string $city,
         #[Max(50)] public readonly ?string $region,
         public readonly ?CountryField $country,
-        #[Max(100)] public readonly ?string $postal_code,
+        #[Max(25)] public readonly ?string $postal_code,
     ) {
     }
 
