@@ -33,4 +33,20 @@ return [
         "createLabel" => "Create Contact",
         "successFlash" => "Contact created.",
     ],
+    "edit" => [
+        "header" => "Edit Contact :name",
+        "title" => ":first_name :last_name",
+        "successFlash" => "Contact updated.",
+        "isDeleted" => "This contact has been deleted.",
+        "deleteLabel" => "Delete Contact",
+        "updateLabel" => "Update Contact",
+    ],
+    "delete" => [
+        "confirmMessage" => "Are you sure you want to delete this contact?",
+        "successFlash" => "Contact deleted.",
+    ],
+    "restore" => [
+        "confirmMessage" => "Are you sure you want to restore this contact?",
+        "successFlash" => "Contact restored.",
+    ],
 ];

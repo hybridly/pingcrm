@@ -33,4 +33,20 @@ return [
         "createLabel" => "登録する",
         "successFlash" => "連絡先を登録しました。",
     ],
+    "edit" => [
+        "header" => "連絡先編集 :name",
+        "title" => ":last_name :first_name",
+        "successFlash" => "連絡先を更新しました。",
+        "isDeleted" => "この連絡先は削除されています。",
+        "deleteLabel" => "削除する",
+        "updateLabel" => "更新する",
+    ],
+    "delete" => [
+        "confirmMessage" => "削除してもよろしいでしょうか？",
+        "successFlash" => "連絡先を削除しました。",
+    ],
+    "restore" => [
+        "confirmMessage" => "復元してもよろしいでしょうか？",
+        "successFlash" => "連絡先を復元しました。",
+    ],
 ];

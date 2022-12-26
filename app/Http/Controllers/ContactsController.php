@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Data\ContactData;
+use App\Data\EditContactData;
 use App\Data\OrganizationData;
 use App\Data\SearchData;
 use App\Data\StoreContactData;
@@ -77,15 +78,30 @@ class ContactsController extends Controller
      */
     public function edit(Contact $contact): HybridResponse
     {
-        return hybridly();
+        $user = Auth::user();
+        if (is_null($user)) {
+            throw new AuthenticationException();
+        }
+        return hybridly("contacts.edit", [
+            "contact" => EditContactData::from($contact),
+            "organizations" => OrganizationData::collection(
+                $user->account->organizations->toArray(),
+            ),
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Contact $contact): RedirectResponse
-    {
-        return back();
+    public function update(
+        StoreContactData $data,
+        Contact $contact,
+    ): RedirectResponse {
+        $contact->update($data->toArray());
+        return to_route("contacts.index")->with(
+            "success",
+            __("contacts.edit.successFlash"),
+        );
     }
 
     /**
@@ -93,14 +109,22 @@ class ContactsController extends Controller
      */
     public function destroy(Contact $contact): RedirectResponse
     {
-        return back();
+        $contact->delete();
+        return to_route("contacts.index")->with(
+            "success",
+            __("contacts.delete.successFlash"),
+        );
     }
 
     /**
      * Restore the specified resource.
      */
-    public function restore(Contact $organization): RedirectResponse
+    public function restore(Contact $contact): RedirectResponse
     {
-        return back();
+        $contact->restore();
+        return to_route("contacts.index")->with(
+            "success",
+            __("contacts.restore.successFlash"),
+        );
     }
 }
