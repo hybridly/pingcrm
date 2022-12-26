@@ -15,17 +15,6 @@ class Organization extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = [
-        "name",
-        "email",
-        "phone",
-        "address",
-        "city",
-        "region",
-        "country",
-        "postal_code",
-    ];
-
     /** @return BelongsTo<Account,Organization>  */
     public function account(): BelongsTo
     {

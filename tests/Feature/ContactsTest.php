@@ -10,9 +10,7 @@ use function Pest\Laravel\actingAs;
 uses(RefreshDatabase::class);
 
 beforeEach(function () {
-    $this->account = new Account();
-    $this->account->name = "Acme Corporation";
-    $this->account->save();
+    $this->account = Account::create(["name" => "Acme Corporation"]);
 
     $this->user = User::factory()
         ->for($this->account)
