@@ -17,6 +17,6 @@ class SearchData extends Data
 #[TypeScript]
 enum TrashedOption: string
 {
-    case WITH_TRASHED = "with";
-    case ONLY_TRASHED = "only";
+    case WITH_TRASHED = 'with';
+    case ONLY_TRASHED = 'only';
 }

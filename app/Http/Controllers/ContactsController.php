@@ -8,11 +8,9 @@ use App\Data\OrganizationData;
 use App\Data\SearchData;
 use App\Data\StoreContactData;
 use App\Models\Contact;
-use App\Models\User;
 use Hybridly\Contracts\HybridResponse;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ContactsController extends Controller
@@ -26,12 +24,13 @@ class ContactsController extends Controller
         if (is_null($user)) {
             throw new AuthenticationException();
         }
-        return hybridly("contacts.index", [
-            "filters" => $data,
-            "contacts" => ContactData::collection(
+
+        return hybridly('contacts.index', [
+            'filters' => $data,
+            'contacts' => ContactData::collection(
                 $user->account
                     ->contacts()
-                    ->with("organization")
+                    ->with('organization')
                     ->orderByName()
                     ->filter($data)
                     ->paginate(10)
@@ -49,8 +48,9 @@ class ContactsController extends Controller
         if (is_null($user)) {
             throw new AuthenticationException();
         }
-        return hybridly("contacts.create", [
-            "organizations" => OrganizationData::collection(
+
+        return hybridly('contacts.create', [
+            'organizations' => OrganizationData::collection(
                 $user->account->organizations->toArray(),
             ),
         ]);
@@ -67,9 +67,10 @@ class ContactsController extends Controller
         }
 
         $user->account->contacts()->create($data->toArray());
-        return to_route("contacts.index")->with(
-            "success",
-            __("contacts.create.successFlash"),
+
+        return to_route('contacts.index')->with(
+            'success',
+            __('contacts.create.successFlash'),
         );
     }
 
@@ -82,9 +83,10 @@ class ContactsController extends Controller
         if (is_null($user)) {
             throw new AuthenticationException();
         }
-        return hybridly("contacts.edit", [
-            "contact" => EditContactData::from($contact),
-            "organizations" => OrganizationData::collection(
+
+        return hybridly('contacts.edit', [
+            'contact' => EditContactData::from($contact),
+            'organizations' => OrganizationData::collection(
                 $user->account->organizations->toArray(),
             ),
         ]);
@@ -98,9 +100,10 @@ class ContactsController extends Controller
         Contact $contact,
     ): RedirectResponse {
         $contact->update($data->toArray());
-        return to_route("contacts.index")->with(
-            "success",
-            __("contacts.edit.successFlash"),
+
+        return to_route('contacts.index')->with(
+            'success',
+            __('contacts.edit.successFlash'),
         );
     }
 
@@ -110,9 +113,10 @@ class ContactsController extends Controller
     public function destroy(Contact $contact): RedirectResponse
     {
         $contact->delete();
-        return to_route("contacts.index")->with(
-            "success",
-            __("contacts.delete.successFlash"),
+
+        return to_route('contacts.index')->with(
+            'success',
+            __('contacts.delete.successFlash'),
         );
     }
 
@@ -122,9 +126,10 @@ class ContactsController extends Controller
     public function restore(Contact $contact): RedirectResponse
     {
         $contact->restore();
-        return to_route("contacts.index")->with(
-            "success",
-            __("contacts.restore.successFlash"),
+
+        return to_route('contacts.index')->with(
+            'success',
+            __('contacts.restore.successFlash'),
         );
     }
 }

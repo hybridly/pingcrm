@@ -15,7 +15,7 @@ class StoreContactData extends Data
         #[Max(25)] public readonly string $first_name,
         #[Max(25)] public readonly string $last_name,
         #[
-            Exists(Organization::class, "id"),
+            Exists(Organization::class, 'id'),
         ]
         public readonly ?int $organization_id,
         #[Max(50), Email] public readonly ?string $email,
@@ -31,6 +31,6 @@ class StoreContactData extends Data
     /** @return array<string,string> */
     public static function attributes(): array
     {
-        return __("contacts.attributes");
+        return __('contacts.attributes');
     }
 }

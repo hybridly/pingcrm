@@ -1,18 +1,18 @@
 <?php
 
 return [
-    "hybridly" => "Hybridly",
-    "titleTemplate" => ":title｜Ping CRM",
-    "filterLabel" => "絞り込む",
-    "searchPlaceholder" => "検索",
-    "resetLabel" => "リセット",
-    "formError" => "フォームエラーが:countつあります。",
-    "myProfile" => "プロフィール",
-    "manageUsers" => "ユーザー管理",
-    "logoutLabel" => "ログアウト",
-    "restoreLabel" => "復元",
-    "countries" => [
-        "CA" => "カナダ",
-        "US" => "アメリカ",
+    'hybridly' => 'Hybridly',
+    'titleTemplate' => ':title｜Ping CRM',
+    'filterLabel' => '絞り込む',
+    'searchPlaceholder' => '検索',
+    'resetLabel' => 'リセット',
+    'formError' => 'フォームエラーが:countつあります。',
+    'myProfile' => 'プロフィール',
+    'manageUsers' => 'ユーザー管理',
+    'logoutLabel' => 'ログアウト',
+    'restoreLabel' => '復元',
+    'countries' => [
+        'CA' => 'カナダ',
+        'US' => 'アメリカ',
     ],
 ];

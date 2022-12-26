@@ -24,6 +24,6 @@ class StoreOrganizationData extends Data
     /** @return array<string,string> */
     public static function attributes(): array
     {
-        return __("organizations.attributes");
+        return __('organizations.attributes');
     }
 }

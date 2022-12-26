@@ -28,7 +28,7 @@ class Contact extends Model
 
     public function scopeOrderByName(Builder $query): Builder
     {
-        return $query->orderBy("last_name")->orderBy("first_name");
+        return $query->orderBy('last_name')->orderBy('first_name');
     }
 
     public function scopeFilter(Builder $query, SearchData $data): Builder
@@ -36,10 +36,10 @@ class Contact extends Model
         return $query
             ->when(
                 $data->keyword,
-                fn(Builder $query, $search) => $query->where(
-                    fn($query) => $query
-                        ->where("first_name", "like", "%" . $search . "%")
-                        ->orWhere("last_name", "like", "%" . $search . "%"),
+                fn (Builder $query, $search) => $query->where(
+                    fn ($query) => $query
+                        ->where('first_name', 'like', '%'.$search.'%')
+                        ->orWhere('last_name', 'like', '%'.$search.'%'),
                 ),
             )
             ->when($data->trashedOption, function (

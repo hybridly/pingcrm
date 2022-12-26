@@ -15,11 +15,11 @@ class HandleHybridRequests extends Middleware
     public function share(): SharedData
     {
         return SharedData::from([
-            "security" => [
-                "user" => UserData::optional(auth()->user()),
+            'security' => [
+                'user' => UserData::optional(auth()->user()),
             ],
-            "currentRoute" => Route::currentRouteName(),
-            "locale" => app()->getLocale(),
+            'currentRoute' => Route::currentRouteName(),
+            'locale' => app()->getLocale(),
         ]);
     }
 }

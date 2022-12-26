@@ -32,10 +32,10 @@ class Organization extends Model
         return $query
             ->when(
                 $data->keyword,
-                fn(Builder $query, $search) => $query->where(
-                    "name",
-                    "like",
-                    "%" . $search . "%",
+                fn (Builder $query, $search) => $query->where(
+                    'name',
+                    'like',
+                    '%'.$search.'%',
                 ),
             )
             ->when($data->trashedOption, function (

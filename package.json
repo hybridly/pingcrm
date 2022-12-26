@@ -52,6 +52,6 @@
     },
     "lint-staged": {
         "*.{js,ts,vue}": "eslint --fix",
-        "*.{js,ts,vue,md,yaml,yml,json,php}": "prettier --ignore-unknown --write"
+        "*.{js,ts,vue,md,yaml,yml,json,php}": "./vendor/bin/pint"
     }
 }

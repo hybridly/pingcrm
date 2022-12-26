@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Storage;
 
 class SetLocale
 {
-    private const SESSION_KEY = "locale";
+    private const SESSION_KEY = 'locale';
 
     public function handle(Request $request, Closure $next): mixed
     {
-        if (!session()->has(self::SESSION_KEY)) {
+        if (! session()->has(self::SESSION_KEY)) {
             $available_locales = $this->getAvailableLocales();
             session()->put(
                 self::SESSION_KEY,
@@ -32,8 +32,8 @@ class SetLocale
     private function getAvailableLocales(): array
     {
         return Arr::map(
-            Storage::disk("local")->directories(lang_path()),
-            fn($directory) => basename($directory),
+            Storage::disk('local')->directories(lang_path()),
+            fn ($directory) => basename($directory),
         );
     }
 }

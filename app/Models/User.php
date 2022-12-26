@@ -23,7 +23,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $hidden = ["password", "remember_token"];
+    protected $hidden = ['password', 'remember_token'];
 
     /**
      * The attributes that should be cast.
@@ -31,8 +31,8 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        "owner" => "boolean",
-        "email_verified_at" => "datetime",
+        'owner' => 'boolean',
+        'email_verified_at' => 'datetime',
     ];
 
     /** @return BelongsTo<Account,User>  */
@@ -45,7 +45,7 @@ class User extends Authenticatable
     public function password(): Attribute
     {
         return Attribute::make(
-            set: fn($new_password) => Hash::needsRehash($new_password)
+            set: fn ($new_password) => Hash::needsRehash($new_password)
                 ? Hash::make($new_password)
                 : $new_password,
         );
