@@ -17,6 +17,7 @@ class Contact extends Model
     protected $fillable = [
         "first_name",
         "last_name",
+        "account_id",
         "organization_id",
         "email",
         "phone",
@@ -41,7 +42,7 @@ class Contact extends Model
 
     public function scopeOrderByName(Builder $query): Builder
     {
-        return $query->orderBy("first_name")->orderBy("last_name");
+        return $query->orderBy("last_name")->orderBy("first_name");
     }
 
     public function scopeFilter(Builder $query, SearchData $data): Builder
