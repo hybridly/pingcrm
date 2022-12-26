@@ -8,7 +8,6 @@ use App\Data\SearchData;
 use App\Data\StoreOrganizationData;
 use App\Models\Organization;
 use Hybridly\Contracts\HybridResponse;
-use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,10 +18,8 @@ class OrganizationsController extends Controller
      */
     public function index(SearchData $data): HybridResponse
     {
-        $user = Auth::user();
-        if (is_null($user)) {
-            throw new AuthenticationException();
-        }
+        /** @var \App\Models\User */
+        $user = Auth::authenticate();
 
         return hybridly('organizations.index', [
             'filters' => $data,
@@ -50,10 +47,8 @@ class OrganizationsController extends Controller
      */
     public function store(StoreOrganizationData $data): RedirectResponse
     {
-        $user = Auth::user();
-        if (is_null($user)) {
-            throw new AuthenticationException();
-        }
+        /** @var \App\Models\User */
+        $user = Auth::authenticate();
 
         $user->account->organizations()->create($data->toArray());
 

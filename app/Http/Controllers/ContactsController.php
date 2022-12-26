@@ -9,7 +9,6 @@ use App\Data\SearchData;
 use App\Data\StoreContactData;
 use App\Models\Contact;
 use Hybridly\Contracts\HybridResponse;
-use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,10 +19,8 @@ class ContactsController extends Controller
      */
     public function index(SearchData $data): HybridResponse
     {
-        $user = Auth::user();
-        if (is_null($user)) {
-            throw new AuthenticationException();
-        }
+        /** @var \App\Models\User */
+        $user = Auth::authenticate();
 
         return hybridly('contacts.index', [
             'filters' => $data,
@@ -44,10 +41,8 @@ class ContactsController extends Controller
      */
     public function create(): HybridResponse
     {
-        $user = Auth::user();
-        if (is_null($user)) {
-            throw new AuthenticationException();
-        }
+        /** @var \App\Models\User */
+        $user = Auth::authenticate();
 
         return hybridly('contacts.create', [
             'organizations' => OrganizationData::collection(
@@ -61,10 +56,8 @@ class ContactsController extends Controller
      */
     public function store(StoreContactData $data): RedirectResponse
     {
-        $user = Auth::user();
-        if (is_null($user)) {
-            throw new AuthenticationException();
-        }
+        /** @var \App\Models\User */
+        $user = Auth::authenticate();
 
         $user->account->contacts()->create($data->toArray());
 
@@ -79,10 +72,8 @@ class ContactsController extends Controller
      */
     public function edit(Contact $contact): HybridResponse
     {
-        $user = Auth::user();
-        if (is_null($user)) {
-            throw new AuthenticationException();
-        }
+        /** @var \App\Models\User */
+        $user = Auth::authenticate();
 
         return hybridly('contacts.edit', [
             'contact' => EditContactData::from($contact),
