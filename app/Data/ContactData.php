@@ -26,7 +26,7 @@ class ContactData extends Data
             $contact->first_name,
             $contact->last_name,
             $contact->city,
-            OrganizationData::from($contact->organization),
+            OrganizationData::optional($contact->organization),
             $contact->phone,
             $contact->deleted_at,
         );

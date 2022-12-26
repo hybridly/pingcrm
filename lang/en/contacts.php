@@ -6,7 +6,7 @@ return [
         "first_name" => "First Name",
         "last_name" => "Last Name",
         "name" => "Name",
-        "organization" => "Organization",
+        "organization_id" => "Organization",
         "email" => "Email",
         "phone" => "Phone",
         "address" => "Address",
@@ -26,5 +26,11 @@ return [
         "createContactMobile" => "Create",
         "noneFound" => "No contacts found.",
         "displayName" => ":first_name :last_name",
+    ],
+    "create" => [
+        "title" => "Create Contact",
+        "header" => "Create Contact",
+        "createLabel" => "Create Contact",
+        "successFlash" => "Contact created.",
     ],
 ];

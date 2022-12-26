@@ -6,7 +6,7 @@ return [
         "first_name" => "氏名（名）",
         "last_name" => "氏名（姓）",
         "name" => "氏名",
-        "organization" => "組織",
+        "organization_id" => "組織",
         "email" => "メールアドレス",
         "phone" => "電話番号",
         "address" => "住所",
@@ -26,5 +26,11 @@ return [
         "createContactMobile" => "新規作成",
         "noneFound" => "連絡先は登録されていません",
         "displayName" => ":last_name :first_name",
+    ],
+    "create" => [
+        "title" => "連絡先登録",
+        "header" => "連絡先登録",
+        "createLabel" => "登録する",
+        "successFlash" => "連絡先を登録しました。",
     ],
 ];

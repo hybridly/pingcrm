@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Data\ContactData;
+use App\Data\OrganizationData;
 use App\Data\SearchData;
+use App\Data\StoreContactData;
 use App\Models\Contact;
+use App\Models\User;
 use Hybridly\Contracts\HybridResponse;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\RedirectResponse;
@@ -41,15 +44,32 @@ class ContactsController extends Controller
      */
     public function create(): HybridResponse
     {
-        return hybridly();
+        $user = Auth::user();
+        if (is_null($user)) {
+            throw new AuthenticationException();
+        }
+        return hybridly("contacts.create", [
+            "organizations" => OrganizationData::collection(
+                $user->account->organizations->toArray(),
+            ),
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(StoreContactData $data): RedirectResponse
     {
-        return back();
+        $user = Auth::user();
+        if (is_null($user)) {
+            throw new AuthenticationException();
+        }
+
+        $user->account->contacts()->create($data->toArray());
+        return to_route("contacts.index")->with(
+            "success",
+            __("contacts.create.successFlash"),
+        );
     }
 
     /**

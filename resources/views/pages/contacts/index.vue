@@ -46,7 +46,7 @@
                         {{ t("contacts.attributes.city") }}
                     </th>
                     <th class="px-6 pt-6 pb-4">
-                        {{ t("contacts.attributes.organization") }}
+                        {{ t("contacts.attributes.organization_id") }}
                     </th>
                     <th class="px-6 pt-6 pb-4" colspan="2">
                         {{ t("contacts.attributes.phone") }}
