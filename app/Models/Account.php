@@ -18,4 +18,10 @@ class Account extends Model
     {
         return $this->hasMany(Organization::class);
     }
+
+    /** @return HasMany<Contact>  */
+    public function contacts(): HasMany
+    {
+        return $this->hasMany(Contact::class);
+    }
 }

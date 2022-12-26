@@ -18,5 +18,5 @@
 <script setup lang="ts">
 const { t } = useI18n();
 
-useHead({ title: t("dashboard.title") });
+useHead({ title: computed(() => t("dashboard.title")) });
 </script>

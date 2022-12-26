@@ -21,7 +21,7 @@ const props = withDefaults(
         required?: boolean;
         error?: string;
         label?: string;
-        modelValue: string | null;
+        modelValue: string | number | null;
     }>(),
     {
         id: () => `select-input-${uid()}`,

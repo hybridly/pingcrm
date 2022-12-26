@@ -8,15 +8,17 @@ use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Organization extends Model
+class Contact extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        "name",
+        "first_name",
+        "last_name",
+        "account_id",
+        "organization_id",
         "email",
         "phone",
         "address",
@@ -26,16 +28,21 @@ class Organization extends Model
         "postal_code",
     ];
 
-    /** @return BelongsTo<Account,Organization>  */
+    /** @return BelongsTo<Organization,Contact> */
+    public function organization(): BelongsTo
+    {
+        return $this->belongsTo(Organization::class);
+    }
+
+    /** @return BelongsTo<Account,Contact> */
     public function account(): BelongsTo
     {
         return $this->belongsTo(Account::class);
     }
 
-    /** @return HasMany<Contact> */
-    public function contacts(): HasMany
+    public function scopeOrderByName(Builder $query): Builder
     {
-        return $this->hasMany(Contact::class);
+        return $query->orderBy("last_name")->orderBy("first_name");
     }
 
     public function scopeFilter(Builder $query, SearchData $data): Builder
@@ -44,9 +51,9 @@ class Organization extends Model
             ->when(
                 $data->keyword,
                 fn(Builder $query, $search) => $query->where(
-                    "name",
-                    "like",
-                    "%" . $search . "%",
+                    fn($query) => $query
+                        ->where("first_name", "like", "%" . $search . "%")
+                        ->orWhere("last_name", "like", "%" . $search . "%"),
                 ),
             )
             ->when($data->trashedOption, function (

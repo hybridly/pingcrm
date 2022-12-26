@@ -1,7 +1,7 @@
 <template layout>
     <div>
         <h1 class="mb-8 font-bold text-3xl">
-            {{ t("organizations.index.header") }}
+            {{ t("contacts.index.header") }}
         </h1>
         <div class="mb-6 flex justify-between items-center">
             <search-filter
@@ -10,32 +10,29 @@
                 @reset="onReset"
             >
                 <label class="block text-gray-700">
-                    {{ t("organizations.index.trashedLabel") }}
+                    {{ t("contacts.index.trashedLabel") }}
                 </label>
                 <select
                     v-model="form.trashedOption"
                     class="mt-1 w-full form-select"
                 >
                     <option :value="null">
-                        {{ t("organizations.index.noTrashed") }}
+                        {{ t("contacts.index.noTrashed") }}
                     </option>
                     <option value="with">
-                        {{ t("organizations.index.withTrashed") }}
+                        {{ t("contacts.index.withTrashed") }}
                     </option>
                     <option value="only">
-                        {{ t("organizations.index.onlyTrashed") }}
+                        {{ t("contacts.index.onlyTrashed") }}
                     </option>
                 </select>
             </search-filter>
-            <router-link
-                class="btn-indigo"
-                :href="route('organizations.create')"
-            >
+            <router-link class="btn-indigo" :href="route('contacts.create')">
                 <span class="md:hidden">
-                    {{ t("organizations.index.createOrganizationMobile") }}
+                    {{ t("contacts.index.createContactMobile") }}
                 </span>
                 <span class="hidden md:inline">
-                    {{ t("organizations.index.createOrganization") }}
+                    {{ t("contacts.index.createContact") }}
                 </span>
             </router-link>
         </div>
@@ -43,28 +40,36 @@
             <table class="w-full whitespace-nowrap">
                 <tr class="text-left font-bold">
                     <th class="px-6 pt-6 pb-4">
-                        {{ t("organizations.attributes.name") }}
+                        {{ t("contacts.attributes.name") }}
                     </th>
                     <th class="px-6 pt-6 pb-4">
-                        {{ t("organizations.attributes.city") }}
+                        {{ t("contacts.attributes.city") }}
+                    </th>
+                    <th class="px-6 pt-6 pb-4">
+                        {{ t("contacts.attributes.organization_id") }}
                     </th>
                     <th class="px-6 pt-6 pb-4" colspan="2">
-                        {{ t("organizations.attributes.phone") }}
+                        {{ t("contacts.attributes.phone") }}
                     </th>
                 </tr>
                 <tr
-                    v-for="organization in organizations.data"
-                    :key="organization.id"
+                    v-for="contact in contacts.data"
+                    :key="contact.id"
                     class="hover:bg-gray-100 focus-within:bg-gray-100"
                 >
                     <td class="border-t">
                         <router-link
                             class="px-6 py-4 flex items-center focus:text-indigo-500"
-                            :href="editLink(organization)"
+                            :href="editLink(contact)"
                         >
-                            {{ organization.name }}
+                            {{
+                                t("contacts.index.displayName", {
+                                    first_name: contact.first_name,
+                                    last_name: contact.last_name,
+                                })
+                            }}
                             <i-ic-baseline-delete
-                                v-if="organization.deleted_at"
+                                v-if="contact.deleted_at"
                                 class="flex-shrink-0 w-4 h-4 text-gray-400 ml-2"
                             />
                         </router-link>
@@ -73,25 +78,34 @@
                         <router-link
                             class="px-6 py-4 flex items-center"
                             tabindex="-1"
-                            :href="editLink(organization)"
+                            :href="editLink(contact)"
                         >
-                            {{ organization.city }}
+                            {{ contact.organization?.name }}
                         </router-link>
                     </td>
                     <td class="border-t">
                         <router-link
                             class="px-6 py-4 flex items-center"
                             tabindex="-1"
-                            :href="editLink(organization)"
+                            :href="editLink(contact)"
                         >
-                            {{ organization.phone }}
+                            {{ contact.city }}
+                        </router-link>
+                    </td>
+                    <td class="border-t">
+                        <router-link
+                            class="px-6 py-4 flex items-center"
+                            tabindex="-1"
+                            :href="editLink(contact)"
+                        >
+                            {{ contact.phone }}
                         </router-link>
                     </td>
                     <td class="border-t w-px">
                         <router-link
                             class="px-4 flex items-center"
                             tabindex="-1"
-                            :href="editLink(organization)"
+                            :href="editLink(contact)"
                         >
                             <i-ic-round-keyboard-arrow-right
                                 class="w-7 h-7 text-gray-400"
@@ -99,17 +113,17 @@
                         </router-link>
                     </td>
                 </tr>
-                <tr v-if="organizations.data.length === 0">
+                <tr v-if="contacts.data.length === 0">
                     <td class="border-t px-6 py-4" colspan="4">
-                        {{ t("organizations.index.noneFound") }}
+                        {{ t("contacts.index.noneFound") }}
                     </td>
                 </tr>
             </table>
         </div>
         <pagination
-            v-if="organizations.links"
+            v-if="contacts.links"
             class="mt-6"
-            :links="organizations.links"
+            :links="contacts.links"
         />
     </div>
 </template>
@@ -117,16 +131,16 @@
 <script setup lang="ts">
 const { t } = useI18n();
 
-useHead({ title: computed(() => t("organizations.index.title")) });
+useHead({ title: computed(() => t("contacts.index.title")) });
 
 const props = defineProps<{
     filters: App.Data.SearchData;
-    organizations: Paginator<App.Data.OrganizationData>;
+    contacts: Paginator<App.Data.ContactData>;
 }>();
 const form = ref(props.filters);
 
 const throttledSubmit = useThrottleFn(() => {
-    router.get(route("organizations.index"), {
+    router.get(route("contacts.index"), {
         data: pickDefinedValues(form.value),
         preserveState: true,
     });
@@ -137,8 +151,8 @@ const onReset = () => {
     form.value = mapValuesToNull(form);
 };
 
-const editLink = (organization: App.Data.OrganizationData) =>
-    route("organizations.edit", {
-        organization: organization.id,
+const editLink = (contact: App.Data.ContactData) =>
+    route("contacts.edit", {
+        contact: contact.id,
     });
 </script>

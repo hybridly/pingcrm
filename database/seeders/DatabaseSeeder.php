@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Account;
+use App\Models\Contact;
 use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -31,6 +32,11 @@ class DatabaseSeeder extends Seeder
 
         $organizations = Organization::factory(100)
             ->for($account)
+            ->create();
+
+        Contact::factory(100)
+            ->for($account)
+            ->state(fn() => ["organization_id" => $organizations->random()->id])
             ->create();
     }
 }

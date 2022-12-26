@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticatedSessionController;
+use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\OrganizationsController;
@@ -50,4 +51,14 @@ Route::middleware("auth")->group(function () {
     ])
         ->withTrashed()
         ->name("organizations.restore");
+
+    Route::resource("contacts", ContactsController::class)
+        ->except("show")
+        ->withTrashed();
+    Route::put("contacts/{contact}/restore", [
+        ContactsController::class,
+        "restore",
+    ])
+        ->withTrashed()
+        ->name("contacts.restore");
 });

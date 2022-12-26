@@ -12,10 +12,6 @@ return [
         "country" => "国",
         "postal_code" => "郵便番号",
     ],
-    "countries" => [
-        "CA" => "カナダ",
-        "US" => "アメリカ",
-    ],
     "index" => [
         "title" => "組織",
         "header" => "組織",

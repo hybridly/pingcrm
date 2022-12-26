@@ -3,8 +3,9 @@
 use App\Models\Account;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Testing\TestResponse;
 use Pest\Expectation;
+
+use function Pest\Laravel\actingAs;
 
 uses(RefreshDatabase::class);
 
@@ -47,9 +48,8 @@ beforeEach(function () {
 });
 
 it("can view organizations", function () {
-    /** @var TestResponse */
-    $response = $this->actingAs($this->user)->get("/organizations");
-    $response
+    $response = actingAs($this->user)
+        ->get("/organizations")
         ->assertOk()
         ->assertHybridView("organizations.index")
         ->assertHasHybridProperty("organizations.data", 2);
@@ -72,11 +72,8 @@ it("can view organizations", function () {
 });
 
 it("can search for organizations", function () {
-    /** @var TestResponse */
-    $response = $this->actingAs($this->user)->get(
-        "/organizations?keyword=Apple",
-    );
-    $response
+    $response = actingAs($this->user)
+        ->get("/organizations?keyword=Apple")
         ->assertOk()
         ->assertHybridView("organizations.index")
         ->assertHybridProperty("filters.keyword", "Apple")
@@ -97,9 +94,8 @@ it("cannot view deleted organizations", function () {
         ->firstWhere("name", "Microsoft")
         ->delete();
 
-    /** @var TestResponse */
-    $response = $this->actingAs($this->user)->get("/organizations");
-    $response
+    actingAs($this->user)
+        ->get("/organizations")
         ->assertOk()
         ->assertHybridView("organizations.index")
         ->assertHasHybridProperty("organizations.data", 1)
@@ -112,11 +108,8 @@ it("can filter to view deleted organizations", function () {
         ->firstWhere("name", "Microsoft")
         ->delete();
 
-    /** @var TestResponse */
-    $response = $this->actingAs($this->user)->get(
-        "/organizations?trashedOption=with",
-    );
-    $response
+    actingAs($this->user)
+        ->get("/organizations?trashedOption=with")
         ->assertOk()
         ->assertHybridView("organizations.index")
         ->assertHasHybridProperty("organizations.data", 2)
@@ -130,11 +123,8 @@ it("can filter to view ONLY deleted organizations", function () {
         ->firstWhere("name", "Microsoft")
         ->delete();
 
-    /** @var TestResponse */
-    $response = $this->actingAs($this->user)->get(
-        "/organizations?trashedOption=only",
-    );
-    $response
+    actingAs($this->user)
+        ->get("/organizations?trashedOption=only")
         ->assertOk()
         ->assertHybridView("organizations.index")
         ->assertHasHybridProperty("organizations.data", 1)

@@ -64,7 +64,7 @@
 <script setup lang="ts">
 const { t } = useI18n();
 
-useHead({ title: t("login.title") });
+useHead({ title: computed(() => t("login.title")) });
 
 const form = useForm<App.Data.LoginData>({
     method: "POST",

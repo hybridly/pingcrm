@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Data\EditOrganizationData;
 use App\Data\OrganizationData;
-use App\Data\SearchOrganizationData;
+use App\Data\SearchData;
 use App\Data\StoreOrganizationData;
 use App\Models\Organization;
 use Hybridly\Contracts\HybridResponse;
@@ -17,7 +17,7 @@ class OrganizationsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(SearchOrganizationData $data): HybridResponse
+    public function index(SearchData $data): HybridResponse
     {
         $user = Auth::user();
         if (is_null($user)) {
@@ -67,7 +67,9 @@ class OrganizationsController extends Controller
     public function edit(Organization $organization): HybridResponse
     {
         return hybridly("organizations.edit", [
-            "organization" => EditOrganizationData::from($organization),
+            "organization" => EditOrganizationData::from(
+                $organization->load("contacts"),
+            ),
         ]);
     }
 
