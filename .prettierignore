@@ -1,7 +1,10 @@
 vendor
 node_modules
 storage
+coverage
 .pnpm-store
+.vscode
+.eslintrc-auto-import.json
 pnpm-lock.yaml
 composer.lock
 resources/types/*.d.ts
