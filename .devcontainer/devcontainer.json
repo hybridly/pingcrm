@@ -6,11 +6,14 @@
   "workspaceFolder": "/var/www/html",
   "settings": {},
   "extensions": [
-    // "mikestead.dotenv",
-    // "amiralizadeh9480.laravel-extra-intellisense",
-    // "ryannaddy.laravel-artisan",
-    // "onecentlin.laravel5-snippets",
-    // "onecentlin.laravel-blade"
+    "dbaeumer.vscode-eslint",
+    "open-southeners.laravel-pint",
+    "bmewburn.vscode-intelephense-client",
+    "SanderRonde.phpstan-vscode",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "Vue.volar",
+    "amiralizadeh9480.laravel-extra-intellisense"
   ],
   "remoteUser": "sail",
   "initializeCommand": "docker run --rm -u \"$(id -u):$(id -g)\" -v \"$(pwd):/var/www/html\" -w /var/www/html laravelsail/php81-composer:latest composer install --ignore-platform-reqs && (cp -n .env.devcontainer .env || echo 'env file already exists')",
