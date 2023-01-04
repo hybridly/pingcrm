@@ -10,7 +10,6 @@
   },
   "devDependencies": {
     "@iconify-json/ic": "^1.1.10",
-    "@iconify-json/line-md": "^1.1.20",
     "@popperjs/core": "^2.11.6",
     "@types/node": "^18.11.12",
     "@typescript-eslint/eslint-plugin": "^5.46.0",

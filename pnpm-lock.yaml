@@ -2,7 +2,6 @@ lockfileVersion: 5.4
 
 specifiers:
   '@iconify-json/ic': ^1.1.10
-  '@iconify-json/line-md': ^1.1.20
   '@popperjs/core': ^2.11.6
   '@types/node': ^18.11.12
   '@typescript-eslint/eslint-plugin': ^5.46.0
@@ -37,7 +36,6 @@ specifiers:
 
 devDependencies:
   '@iconify-json/ic': 1.1.10
-  '@iconify-json/line-md': 1.1.20
   '@popperjs/core': 2.11.6
   '@types/node': 18.11.12
   '@typescript-eslint/eslint-plugin': 5.46.0_5mle7isnkfgjmrghnnczirv6iy
@@ -419,12 +417,6 @@ packages:
 
   /@iconify-json/ic/1.1.10:
     resolution: {integrity: sha512-EmyoOv/MHYEZcpRtvU/+PTSd3vGv81bpdaUiLzym3XI7Y8kLMWVGr/rnztgb12Mzwi/hHkwfRq1GgdbyNSVPPQ==}
-    dependencies:
-      '@iconify/types': 2.0.0
-    dev: true
-
-  /@iconify-json/line-md/1.1.20:
-    resolution: {integrity: sha512-ebO82ctZuLd4NILc3FI9apej9L3BkSigDbJjvkHS4BYfKkBoHsdO1/ycJq56LhRYyfcurj17zbcmN2a4oPkewg==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true
