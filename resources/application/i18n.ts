@@ -11,6 +11,7 @@ declare module "vue-i18n" {
 
 export const i18n = createI18n<[MessageSchema], keyof typeof messages>({
   legacy: false,
+  fallbackLocale: "en",
   messages,
 })
 export const locale = i18n.global
