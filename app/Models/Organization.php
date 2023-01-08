@@ -15,17 +15,6 @@ class Organization extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = [
-        "name",
-        "email",
-        "phone",
-        "address",
-        "city",
-        "region",
-        "country",
-        "postal_code",
-    ];
-
     /** @return BelongsTo<Account,Organization>  */
     public function account(): BelongsTo
     {
@@ -43,10 +32,10 @@ class Organization extends Model
         return $query
             ->when(
                 $data->keyword,
-                fn(Builder $query, $search) => $query->where(
-                    "name",
-                    "like",
-                    "%" . $search . "%",
+                fn (Builder $query, $search) => $query->where(
+                    'name',
+                    'like',
+                    '%'.$search.'%',
                 ),
             )
             ->when($data->trashedOption, function (

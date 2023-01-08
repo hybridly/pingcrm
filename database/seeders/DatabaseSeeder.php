@@ -15,16 +15,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $account = Account::create(["name" => "Acme Corporation"]);
+        $account = Account::create(['name' => 'Acme Corporation']);
 
         User::factory()
             ->for($account)
             ->create([
-                "first_name" => "John",
-                "last_name" => "Doe",
-                "email" => "johndoe@example.com",
-                "password" => "secret",
-                "owner" => true,
+                'first_name' => 'John',
+                'last_name' => 'Doe',
+                'email' => 'johndoe@example.com',
+                'password' => 'secret',
+                'owner' => true,
             ]);
         User::factory(5)
             ->for($account)
@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
 
         Contact::factory(100)
             ->for($account)
-            ->state(fn() => ["organization_id" => $organizations->random()->id])
+            ->state(fn () => ['organization_id' => $organizations->random()->id])
             ->create();
     }
 }

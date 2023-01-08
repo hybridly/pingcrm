@@ -17,17 +17,17 @@ class ContactFactory extends Factory
     public function definition()
     {
         return [
-            "first_name" => fake()->firstName(),
-            "last_name" => fake()->lastName(),
-            "email" => fake()
+            'first_name' => fake()->firstName(),
+            'last_name' => fake()->lastName(),
+            'email' => fake()
                 ->unique()
                 ->safeEmail(),
-            "phone" => fake()->e164PhoneNumber(),
-            "address" => fake()->streetAddress(),
-            "city" => fake()->city(),
-            "region" => fake("en-US")->state(), // @phpstan-ignore-line
-            "country" => "US",
-            "postal_code" => fake()->postcode(),
+            'phone' => fake()->e164PhoneNumber(),
+            'address' => fake()->streetAddress(),
+            'city' => fake()->city(),
+            'region' => fake('en-US')->state(), // @phpstan-ignore-line
+            'country' => 'US',
+            'postal_code' => fake()->postcode(),
         ];
     }
 }

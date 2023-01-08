@@ -29,15 +29,15 @@ class LoginData extends Data
         $this->ensureIsNotRateLimited();
 
         if (
-            !Auth::attempt(
-                ["email" => $this->email, "password" => $this->password],
+            ! Auth::attempt(
+                ['email' => $this->email, 'password' => $this->password],
                 $this->remember,
             )
         ) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                "email" => __("auth.failed"),
+                'email' => __('auth.failed'),
             ]);
         }
 
@@ -51,7 +51,7 @@ class LoginData extends Data
      */
     public function ensureIsNotRateLimited(): void
     {
-        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
 
@@ -60,8 +60,8 @@ class LoginData extends Data
         $seconds = RateLimiter::availableIn($this->throttleKey());
 
         throw ValidationException::withMessages([
-            "email" => trans("auth.throttle", [
-                "seconds" => $seconds,
+            'email' => trans('auth.throttle', [
+                'seconds' => $seconds,
             ]),
         ]);
     }
@@ -71,6 +71,6 @@ class LoginData extends Data
      */
     public function throttleKey(): string
     {
-        return Str::lower($this->email) . "|" . request()->ip();
+        return Str::lower($this->email).'|'.request()->ip();
     }
 }

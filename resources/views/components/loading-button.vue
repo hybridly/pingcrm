@@ -1,10 +1,39 @@
 <template>
-    <button :disabled="loading" class="flex items-center">
-        <i-line-md-loading-loop v-if="loading" class="mr-2" />
-        <slot />
-    </button>
+  <button :disabled="loading" class="flex items-center">
+    <slot />
+  </button>
 </template>
 
 <script setup lang="ts">
-defineProps<{ loading: boolean }>();
+defineProps<{ loading: boolean }>()
 </script>
+
+<style scoped>
+.btn-spinner,
+.btn-spinner:after {
+  border-radius: 50%;
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.btn-spinner {
+  font-size: 10px;
+  position: relative;
+  text-indent: -9999em;
+  border-top: 0.2em solid white;
+  border-right: 0.2em solid white;
+  border-bottom: 0.2em solid white;
+  border-left: 0.2em solid transparent;
+  transform: translateZ(0);
+  animation: spinning 1s infinite linear;
+}
+
+@keyframes spinning {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>

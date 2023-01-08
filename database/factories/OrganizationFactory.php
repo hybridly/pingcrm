@@ -17,14 +17,14 @@ class OrganizationFactory extends Factory
     public function definition()
     {
         return [
-            "name" => fake()->company(),
-            "email" => fake()->companyEmail(),
-            "phone" => fake()->e164PhoneNumber(),
-            "address" => fake()->streetAddress(),
-            "city" => fake()->city(),
-            "region" => fake("en-US")->state(), // @phpstan-ignore-line
-            "country" => "US",
-            "postal_code" => fake()->postcode(),
+            'name' => fake()->company(),
+            'email' => fake()->companyEmail(),
+            'phone' => fake()->e164PhoneNumber(),
+            'address' => fake()->streetAddress(),
+            'city' => fake()->city(),
+            'region' => fake('en-US')->state(), // @phpstan-ignore-line
+            'country' => 'US',
+            'postal_code' => fake()->postcode(),
         ];
     }
 }

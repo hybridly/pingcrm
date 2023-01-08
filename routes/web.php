@@ -20,45 +20,45 @@ use Illuminate\Support\Facades\Route;
 
 // Auth
 
-Route::get("login", [AuthenticatedSessionController::class, "create"])
-    ->name("login")
-    ->middleware("guest");
+Route::get('login', [AuthenticatedSessionController::class, 'create'])
+    ->name('login')
+    ->middleware('guest');
 
-Route::post("login", [AuthenticatedSessionController::class, "store"])
-    ->name("login.store")
-    ->middleware("guest");
+Route::post('login', [AuthenticatedSessionController::class, 'store'])
+    ->name('login.store')
+    ->middleware('guest');
 
-Route::delete("logout", [
+Route::delete('logout', [
     AuthenticatedSessionController::class,
-    "destroy",
-])->name("logout");
+    'destroy',
+])->name('logout');
 
-Route::post("locale/{locale}", [LocaleController::class, "set_locale"])->name(
-    "locale.set",
+Route::post('locale/{locale}', [LocaleController::class, 'set_locale'])->name(
+    'locale.set',
 );
 
-Route::middleware("auth")->group(function () {
-    Route::get("/", [DashboardController::class, "index"])->name(
-        "dashboard.index",
+Route::middleware('auth')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name(
+        'dashboard.index',
     );
 
-    Route::resource("organizations", OrganizationsController::class)
-        ->except("show")
+    Route::resource('organizations', OrganizationsController::class)
+        ->except('show')
         ->withTrashed();
-    Route::put("organizations/{organization}/restore", [
+    Route::put('organizations/{organization}/restore', [
         OrganizationsController::class,
-        "restore",
+        'restore',
     ])
         ->withTrashed()
-        ->name("organizations.restore");
+        ->name('organizations.restore');
 
-    Route::resource("contacts", ContactsController::class)
-        ->except("show")
+    Route::resource('contacts', ContactsController::class)
+        ->except('show')
         ->withTrashed();
-    Route::put("contacts/{contact}/restore", [
+    Route::put('contacts/{contact}/restore', [
         ContactsController::class,
-        "restore",
+        'restore',
     ])
         ->withTrashed()
-        ->name("contacts.restore");
+        ->name('contacts.restore');
 });

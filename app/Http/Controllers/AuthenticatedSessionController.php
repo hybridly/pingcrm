@@ -15,7 +15,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): HybridResponse
     {
-        return hybridly("auth.login");
+        return hybridly('auth.login');
     }
 
     /**
@@ -25,6 +25,7 @@ class AuthenticatedSessionController extends Controller
     {
         $data->authenticate();
         session()->regenerate();
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
@@ -33,11 +34,11 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(): RedirectResponse
     {
-        Auth::guard("web")->logout();
+        Auth::guard('web')->logout();
 
         session()->invalidate();
         session()->regenerateToken();
 
-        return redirect("/");
+        return redirect('/');
     }
 }

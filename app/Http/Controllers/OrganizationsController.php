@@ -8,7 +8,6 @@ use App\Data\SearchData;
 use App\Data\StoreOrganizationData;
 use App\Models\Organization;
 use Hybridly\Contracts\HybridResponse;
-use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,16 +18,15 @@ class OrganizationsController extends Controller
      */
     public function index(SearchData $data): HybridResponse
     {
-        $user = Auth::user();
-        if (is_null($user)) {
-            throw new AuthenticationException();
-        }
-        return hybridly("organizations.index", [
-            "filters" => $data,
-            "organizations" => OrganizationData::collection(
+        /** @var \App\Models\User */
+        $user = Auth::authenticate();
+
+        return hybridly('organizations.index', [
+            'filters' => $data,
+            'organizations' => OrganizationData::collection(
                 $user->account
                     ->organizations()
-                    ->orderBy("name")
+                    ->orderBy('name')
                     ->filter($data)
                     ->paginate(10)
                     ->withQueryString(),
@@ -41,7 +39,7 @@ class OrganizationsController extends Controller
      */
     public function create(): HybridResponse
     {
-        return hybridly("organizations.create");
+        return hybridly('organizations.create');
     }
 
     /**
@@ -49,15 +47,14 @@ class OrganizationsController extends Controller
      */
     public function store(StoreOrganizationData $data): RedirectResponse
     {
-        $user = Auth::user();
-        if (is_null($user)) {
-            throw new AuthenticationException();
-        }
+        /** @var \App\Models\User */
+        $user = Auth::authenticate();
 
         $user->account->organizations()->create($data->toArray());
-        return to_route("organizations.index")->with(
-            "success",
-            __("organizations.create.successFlash"),
+
+        return to_route('organizations.index')->with(
+            'success',
+            __('organizations.create.successFlash'),
         );
     }
 
@@ -66,9 +63,9 @@ class OrganizationsController extends Controller
      */
     public function edit(Organization $organization): HybridResponse
     {
-        return hybridly("organizations.edit", [
-            "organization" => EditOrganizationData::from(
-                $organization->load("contacts"),
+        return hybridly('organizations.edit', [
+            'organization' => EditOrganizationData::from(
+                $organization->load('contacts'),
             ),
         ]);
     }
@@ -81,9 +78,10 @@ class OrganizationsController extends Controller
         Organization $organization,
     ): RedirectResponse {
         $organization->update($data->toArray());
-        return to_route("organizations.index")->with(
-            "success",
-            __("organizations.edit.successFlash"),
+
+        return to_route('organizations.index')->with(
+            'success',
+            __('organizations.edit.successFlash'),
         );
     }
 
@@ -93,9 +91,10 @@ class OrganizationsController extends Controller
     public function destroy(Organization $organization): RedirectResponse
     {
         $organization->delete();
-        return to_route("organizations.index")->with(
-            "success",
-            __("organizations.delete.successFlash"),
+
+        return to_route('organizations.index')->with(
+            'success',
+            __('organizations.delete.successFlash'),
         );
     }
 
@@ -105,9 +104,10 @@ class OrganizationsController extends Controller
     public function restore(Organization $organization): RedirectResponse
     {
         $organization->restore();
-        return to_route("organizations.index")->with(
-            "success",
-            __("organizations.restore.successFlash"),
+
+        return to_route('organizations.index')->with(
+            'success',
+            __('organizations.restore.successFlash'),
         );
     }
 }
