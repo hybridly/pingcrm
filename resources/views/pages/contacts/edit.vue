@@ -16,7 +16,7 @@
     </h1>
 
     <trashed-message v-if="contact.deleted_at" class="mb-6" @restore="restore">
-      {{ t("contacts.edit.isDeleted") }}
+      {{ t("users.edit.isDeleted") }}
     </trashed-message>
 
     <div class="max-w-3xl bg-white rounded-md shadow overflow-hidden">

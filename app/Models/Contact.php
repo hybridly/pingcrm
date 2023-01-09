@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Data\SearchData;
-use App\Data\TrashedOption;
+use App\Enums\TrashedOption;
 use Illuminate\Contracts\Database\Query\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
