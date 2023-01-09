@@ -22,3 +22,6 @@ parameters:
         -
             message: '#^Method App\\Data\\[a-zA-Z0-9\\_]+\:\:attributes\(\) should return array\<string, string\> but returns mixed\.$#'
             path: app/Data/*
+        -
+            message: '#^Method App\\Http\\Controllers\\ImagesController\:\:show\(\) should return Symfony\\Component\\HttpFoundation\\StreamedResponse but returns mixed\.$#'
+            path: app/Http/Controllers/ImagesController.php

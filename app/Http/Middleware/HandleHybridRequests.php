@@ -2,8 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use App\Data\CurrentUserData;
 use App\Data\SharedData;
-use App\Data\UserData;
 use Hybridly\Http\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -16,7 +16,7 @@ class HandleHybridRequests extends Middleware
     {
         return SharedData::from([
             'security' => [
-                'user' => UserData::optional(auth()->user()),
+                'user' => CurrentUserData::optional(auth()->user()),
             ],
             'currentRoute' => Route::currentRouteName(),
             'locale' => app()->getLocale(),
