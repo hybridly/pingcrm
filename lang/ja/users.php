@@ -36,7 +36,7 @@ return [
         'header' => 'ユーザー編集 :name',
         'title' => ':last_name :first_name',
         'successFlash' => 'ユーザーを更新しました。',
-        'isDeleted' => 'このユーザーは削除されています。',
+        'isDeleted' => '削除されてたユーザーです。',
         'deleteLabel' => '削除する',
         'updateLabel' => '更新する',
     ],

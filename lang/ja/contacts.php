@@ -37,7 +37,7 @@ return [
         'header' => '連絡先編集 :name',
         'title' => ':last_name :first_name',
         'successFlash' => '連絡先を更新しました。',
-        'isDeleted' => 'この連絡先は削除されています。',
+        'isDeleted' => '削除されてた連絡先です。',
         'deleteLabel' => '削除する',
         'updateLabel' => '更新する',
     ],

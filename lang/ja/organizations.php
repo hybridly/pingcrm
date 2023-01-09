@@ -33,7 +33,7 @@ return [
         'header' => '組織編集 :name',
         'title' => ':name',
         'successFlash' => '組織を更新しました。',
-        'isDeleted' => 'この組織は削除されています。',
+        'isDeleted' => '削除されてた組織です。',
         'deleteLabel' => '削除する',
         'updateLabel' => '更新する',
     ],
