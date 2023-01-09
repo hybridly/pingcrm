@@ -25,9 +25,3 @@ parameters:
         -
             message: '#^Method App\\Http\\Controllers\\ImagesController\:\:show\(\) should return Symfony\\Component\\HttpFoundation\\StreamedResponse but returns mixed\.$#'
             path: app/Http/Controllers/ImagesController.php
-        -
-            message: '#^Parameter \#4 \$password of class App\\Data\\StoreUserData constructor expects string\|null, mixed given\.$#'
-            path: app/Data/StoreUserData.php
-        -
-            message: '#^Parameter \#5 \$owner of class App\\Data\\StoreUserData constructor expects bool, mixed given\.$#'
-            path: app/Data/StoreUserData.php
