@@ -1,7 +1,8 @@
-<p align="center" style="display:flex; justify-content:center;">
-  <img src=".github/assets/pingcrm-logo.svg" style="width:200px;" />
+<p align="center">
   <img src=".github/assets/logo-shadow.svg" style="width:200px;" />
 </p>
+
+<h1 align="center">Ping CRM</h1>
 
 <p align="center">
 <a href="https://github.com/aminevg/pingcrm-hybridly/actions/workflows/ci.yml"><img alt="Status" src="https://github.com/aminevg/pingcrm-hybridly/actions/workflows/ci.yml/badge.svg"></a>
