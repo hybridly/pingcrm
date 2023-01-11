@@ -1,4 +1,3 @@
-import { WritableComputedRef } from "vue"
 import { createI18n } from "vue-i18n"
 import messages from "../i18n/locales.json"
 
@@ -9,10 +8,8 @@ declare module "vue-i18n" {
   export interface DefineLocaleMessage extends MessageSchema {}
 }
 
-export const i18n = createI18n<[MessageSchema], keyof typeof messages>({
+export const i18n = createI18n<[MessageSchema], keyof typeof messages, false>({
   legacy: false,
   fallbackLocale: "en",
   messages,
 })
-export const locale = i18n.global
-  .locale as unknown as WritableComputedRef<string>
