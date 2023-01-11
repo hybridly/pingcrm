@@ -8,17 +8,17 @@
     <template #dropdown>
       <div class="mt-2 text-sm bg-white rounded shadow-xl">
         <router-link
-          v-for="locale in availableLocales"
-          :key="locale"
+          v-for="availableLocale in availableLocales"
+          :key="availableLocale"
           as="button"
           method="POST"
           class="block py-2 px-6 w-full rounded-t hover:text-white hover:bg-indigo-500"
           :class="{
-            'text-white bg-indigo-500': currentLocale === locale,
+            'text-white bg-indigo-500': availableLocale === currentLocale,
           }"
-          :href="route('locale.set', { locale })"
+          :href="route('locale.set', { locale: availableLocale })"
         >
-          {{ t(`locales.${locale}`) }}
+          {{ t(`locales.${availableLocale}`) }}
         </router-link>
       </div>
     </template>
@@ -26,6 +26,5 @@
 </template>
 
 <script setup lang="ts">
-const { t, availableLocales } = useI18n()
-const currentLocale = useProperty("locale")
+const { t, availableLocales, locale: currentLocale } = useI18n()
 </script>
