@@ -28,7 +28,7 @@ The visual aspect of things is mostly unchanged from the original implementation
 - **Vite**: For super-fast HMR
 - **Typescript**: Vue components are rewritten in Composition API + Typescript
 - **Data objects**: `spatie/laravel-data` is used for TS type generation and added type safety
-- **Localization**: Locale switching has been implemented to illustrate Hybridly's integration with vue-i18n. English and Japanese are currently supported, and we welcome PRs for other languages!
+- **Localization**: Locale switching has been implemented to illustrate Hybridly's integration with vue-i18n
 
 # Installation
 
@@ -51,3 +51,13 @@ vendor/bin/sail artisan key:generate
 vendor/bin/sail artisan migrate
 vendor/bin/sail artisan db:seed
 ```
+
+# Supported languages
+
+The following languages have a localization available:
+* English (en)
+* Japanese (ja)
+* Simplified Chinese (zh_CN) -- 🙏 @ycs77
+* Traditional Chinese (zh_TW) -- 🙏 @ycs77
+
+PRs for other languages are welcome!
