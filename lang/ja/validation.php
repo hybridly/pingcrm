@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 return [
     'accepted' => ':Attributeを承認してください。',
     'accepted_if' => ':Otherが:valueの場合、:attributeを承認する必要があります。',
