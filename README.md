@@ -59,3 +59,5 @@ The following languages have a localization available:
 * Japanese (ja)
 * Simplified Chinese (zh_CN) -- 🙏 @ycs77
 * Traditional Chinese (zh_TW) -- 🙏 @ycs77
+
+PRs for other languages are welcome!
