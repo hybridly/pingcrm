@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 return [
     'reset' => '密码重置成功！',
     'sent' => '密码重置邮件已发送！',

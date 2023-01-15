@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 return [
     'reset' => '密碼已成功重設！',
     'sent' => '密碼重設郵件已發送！',

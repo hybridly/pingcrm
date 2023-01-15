@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 return [
     'failed' => '邮箱或密码错误。',
     'password' => '密码错误。',

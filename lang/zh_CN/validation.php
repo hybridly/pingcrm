@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 return [
     'accepted' => '您必须接受 :attribute。',
     'accepted_if' => '当 :other 为 :value 时，必须接受 :attribute。',
