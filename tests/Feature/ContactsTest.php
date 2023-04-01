@@ -3,7 +3,6 @@
 use App\Models\Account;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Pest\Expectation;
 use function Pest\Laravel\actingAs;
 
 uses(RefreshDatabase::class);
@@ -59,18 +58,14 @@ it('can view contacts', function () {
         ->assertHybridView('contacts.index')
         ->assertHasHybridProperty('contacts.data', 2);
 
-    /** @var Expectation<mixed> */
-    $expectation = expect($response->getHybridProperty('contacts.data.0'));
-    $expectation
+    expect($response->getHybridProperty('contacts.data.0'))
         ->toHaveKey('first_name', 'Martin')
         ->toHaveKey('last_name', 'Abbott')
         ->toHaveKey('phone', '555-111-2222')
         ->toHaveKey('city', 'Murphyland')
         ->toHaveKey('deleted_at', null);
 
-    /** @var Expectation<mixed> */
-    $expectation = expect($response->getHybridProperty('contacts.data.1'));
-    $expectation
+    expect($response->getHybridProperty('contacts.data.1'))
         ->toHaveKey('first_name', 'Lynn')
         ->toHaveKey('last_name', 'Kub')
         ->toHaveKey('phone', '555-333-4444')
@@ -85,9 +80,7 @@ it('can search for contacts', function () {
         ->assertHybridView('contacts.index')
         ->assertHasHybridProperty('contacts.data', 1);
 
-    /** @var Expectation<mixed> */
-    $expectation = expect($response->getHybridProperty('contacts.data.0'));
-    $expectation
+    expect($response->getHybridProperty('contacts.data.0'))
         ->toHaveKey('first_name', 'Martin')
         ->toHaveKey('last_name', 'Abbott')
         ->toHaveKey('phone', '555-111-2222')
