@@ -26,7 +26,7 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-vue": "^9.8.0",
     "husky": "^8.0.3",
-    "hybridly": "0.0.1-alpha.24",
+    "hybridly": "0.1.0-alpha.9",
     "laravel-vite-plugin": "^0.7.3",
     "lint-staged": "^13.1.0",
     "postcss": "^8.4.21",

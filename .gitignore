@@ -18,6 +18,7 @@ yarn-error.log
 /.vscode
 .pnpm-store
 
+.hybridly
 resources/types/*.d.ts
 !resources/types/hybridly.d.ts
 !resources/types/shims-*.d.ts
