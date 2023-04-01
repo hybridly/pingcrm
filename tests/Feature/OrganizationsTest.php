@@ -3,7 +3,6 @@
 use App\Models\Account;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Pest\Expectation;
 use function Pest\Laravel\actingAs;
 
 uses(RefreshDatabase::class);
@@ -51,17 +50,13 @@ it('can view organizations', function () {
         ->assertHybridView('organizations.index')
         ->assertHasHybridProperty('organizations.data', 2);
 
-    /** @var Expectation<mixed> */
-    $expectation = expect($response->getHybridProperty('organizations.data.0'));
-    $expectation
+    expect($response->getHybridProperty('organizations.data.0'))
         ->toHaveKey('name', 'Apple')
         ->toHaveKey('phone', '647-943-4400')
         ->toHaveKey('city', 'Toronto')
         ->toHaveKey('deleted_at', null);
 
-    /** @var Expectation<mixed> */
-    $expectation = expect($response->getHybridProperty('organizations.data.1'));
-    $expectation
+    expect($response->getHybridProperty('organizations.data.1'))
         ->toHaveKey('name', 'Microsoft')
         ->toHaveKey('phone', '877-568-2495')
         ->toHaveKey('city', 'Redmond')
@@ -76,9 +71,7 @@ it('can search for organizations', function () {
         ->assertHybridProperty('filters.keyword', 'Apple')
         ->assertHasHybridProperty('organizations.data', 1);
 
-    /** @var Expectation<mixed> */
-    $expectation = expect($response->getHybridProperty('organizations.data.0'));
-    $expectation
+    expect($response->getHybridProperty('organizations.data.0'))
         ->toHaveKey('name', 'Apple')
         ->toHaveKey('phone', '647-943-4400')
         ->toHaveKey('city', 'Toronto')
