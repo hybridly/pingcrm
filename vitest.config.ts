@@ -1,6 +1,6 @@
 import { defineConfig } from "vitest/config"
 import autoimport from "unplugin-auto-import/vite"
-import hybridlyImports from "hybridly/auto-imports"
+import { HybridlyImports } from "hybridly/vite"
 
 export default defineConfig({
   test: {
@@ -14,7 +14,7 @@ export default defineConfig({
         "@vueuse/core",
         "@vueuse/head",
         "vitest",
-        hybridlyImports,
+        HybridlyImports,
       ],
       vueTemplate: true,
       dirs: ["./resources/scripts"],
